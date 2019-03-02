@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="edit_<?php echo $row['id_factura']; ?>" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -18,10 +19,17 @@
           <label for="estado">Estado</label>
           <input value="<?php echo $row['estado'] ?>" name="estado" type="text" class="form-control" id="estado" placeholder="Apellido Paterno" readonly>
         </div>
-        
+      
         <div class="form-group">
+        <?php 
+          $var_oxigeno = $row['oxigeno'];
+          $kuery = "SELECT tipo FROM oxigenos WHERE id_oxigenos='$var_oxigeno'";
+          $resul_oxi = $db->query($kuery);
+          foreach ($resul_oxi as $tipo_oxi);
+         ?>
           <label for="oxigeno">Oxigeno</label>
-          <input value="<?php echo $row['oxigeno']?>" name="oxigeno" type="text" class="form-control" id="oxigeno" placeholder="Apellido Materno" readonly>
+          <input value="<?php echo $tipo_oxi['tipo']?>" name="nombre_oxi" type="text" class="form-control" id="oxigeno"readonly>
+          <input value="<?php echo $row['oxigeno']?>" name="oxigeno" type="hidden" class="form-control" id="oxigeno" placeholder="">
         </div>
 
         <div class="form-group">
