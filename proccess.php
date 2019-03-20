@@ -1,5 +1,5 @@
 <?php
-
+//enero 70.98, -->febrero marzo 74.88
 session_start();
 $usuario = $_POST['usuario'];
 $password = $_POST['contra'];
