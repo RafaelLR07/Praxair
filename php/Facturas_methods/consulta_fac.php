@@ -23,7 +23,7 @@
 			
 				
 				<form action="Facturas_methods/formatos/mensual.php" class="form_pa_ac" method="POST">
-				<input type="" name="kuery_2"  value="0"  id="busca2">
+				<input type="hidden" name="kuery_2"  value="0"  id="busca2">
 				
 				<button id="boton_pdf" name="PDF" type="" class="btn btn-warning btn-lg" type="button">
               		<span class="glyphicon glyphicon-file"></span> Genera
