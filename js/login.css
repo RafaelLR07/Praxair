@@ -1,0 +1,68 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* formulario de pacientes activos */
+#more{
+    margin-bottom: 10px;
+    margin-left: 48%;
+
+}
+
+#boton_pdf{
+    margin-bottom: 10px;
+}
+
+#cont_head{
+    display: inline;
+position: relative;}
+
+#caja_busqueda{
+    width:250px;
+    margin-top: 9px;
+    height: 40px;
+}
+
+
+.formulario{
+    background:white;
+    display: inline;
+    float: left;
+  }
+
+  .form_pa_ac{
+      display: inline;
+      
+     
+  }
+
+ 
+
+
+form {
+    
+    margin:  5px;
+    padding: 5px;
+}
+button{
+    margin: 5px;
+}
+input[type=text], input[type=password] {
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+}
+.logo{
+    width: 60%;
+    height: 20%;
+}
+.contenido-pie{
+    padding: 20px;
+    background: #f7f7f7;
+}
+#icono-nav{
+    margin:  1px 8px;
+    width:   30px;
+    height:  25px;
+}
+textarea{
+    resize: none;
+}
