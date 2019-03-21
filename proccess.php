@@ -1,10 +1,10 @@
 <?php
 //enero 70.98, -->febrero marzo 74.88
+include("php/Scripts/DBconexion.php");
 session_start();
 $usuario = $_POST['usuario'];
 $password = $_POST['contra'];
 
-include("php/Scripts/DBconexion.php");
 $database = new Connection();
 $db = $database->open();
 

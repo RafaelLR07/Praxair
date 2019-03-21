@@ -69,7 +69,7 @@ include_once('fechas.php');
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6,$dates_pac['nombre'],1,0,'C',true);
     
-    //apellidos
+    /*apellidos
     $pdf->Ln(8);
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
@@ -78,14 +78,14 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+    $pdf->Cell(0,6,'',1,0,'C',true);*/
 
     //numero de afilicacion
     $pdf->Ln(8);
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
     $pdf->SetTextColor(0,0,0);
-    $pdf->Cell(90,6,'NUMERO DE AFILICACIÓN',0,0,'C',1);
+    $pdf->Cell(90,6,utf8_encode('NUMERO DE AFILIACION'),0,0,'C',1);
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
@@ -136,7 +136,7 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'PLANTA???',1,0,'C',true);
+    $pdf->Cell(0,6,'',1,0,'C',true);
      
     //COLONIA
     $pdf->Ln(8);
@@ -198,13 +198,13 @@ include_once('fechas.php');
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
     $pdf->SetTextColor(0,0,0);
-    $pdf->Cell(90,6,'TELEFONO',0,0,'C',1);
+    $pdf->Cell(90,6,'TELEFONO O CELULAR',0,0,'C',1);
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6,$dates_pac['telefono'],1,0,'C',true);
 
-    //CELULAR
+    /*CELULAR
     $pdf->Ln(8);
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
@@ -213,7 +213,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'CELULAR??',1,0,'C',true);
+    $pdf->Cell(0,6,'CELULAR??',1,0,'C',true);*/
 
 
     //inicia zona 3 
@@ -263,13 +263,13 @@ include_once('fechas.php');
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
     $pdf->SetTextColor(0,0,0);
-    $pdf->Cell(90,6,'CELULAR',0,0,'C',1);
+    $pdf->Cell(90,6,'TELEFONO O CELULAR',0,0,'C',1);
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'CELULAR????',1,0,'C',true);
+    $pdf->Cell(0,6,$dates_pac['telefono_familiar'],1,0,'C',true);
 
-    //TELEFONO
+    /*TELEFONO
     $pdf->Ln(8);
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
@@ -278,7 +278,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['telefono_familiar'],1,0,'C',true);
+    $pdf->Cell(0,6,,1,0,'C',true);*/
 
     //inicia zona 4
     //INFORMACION DEL PADECIMIENTO DEL PACIENTE
@@ -316,9 +316,11 @@ include_once('fechas.php');
     $pdf->SetTextColor(0,0,0);
     $pdf->Cell(90,6,'LITROS',0,0,'C',1);
 
+    list($var_litros, $var_2,$var_horas) = explode('/',$dates_rec['indicaciones']);
+
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_rec['indicaciones'],1,0,'C',true);
+    $pdf->Cell(0,6,$var_litros,1,0,'C',true);
 
     //horas
     $pdf->Ln(8);
@@ -329,7 +331,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+    $pdf->Cell(0,6,$var_horas,1,0,'C',true);
     
     //EDAD DEL PACIENTE
     $pdf->Ln(8);
@@ -360,7 +362,7 @@ include_once('fechas.php');
  
      $pdf->SetFillColor(255,255,255);
      $pdf->SetFont('Helvetica','',11);
-     $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+     $pdf->Cell(0,6,'',1,0,'C',true);
  
 
      //CMS DE AGUA
@@ -372,7 +374,7 @@ include_once('fechas.php');
  
      $pdf->SetFillColor(255,255,255);
      $pdf->SetFont('Helvetica','',11);
-     $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+     $pdf->Cell(0,6,'',1,0,'C',true);
  
 
     //inicia zona 7
@@ -394,7 +396,7 @@ include_once('fechas.php');
     $pdf->Cell(90,6,'NOMBRE DEL FAMILIAR RESP. DE SMS',0,0,'C',1);
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+    $pdf->Cell(0,6,'',1,0,'C',true);
 
     //CELULAR 1
     $pdf->Ln(8);
@@ -404,7 +406,7 @@ include_once('fechas.php');
     $pdf->Cell(90,6,'CELULAR 1',0,0,'C',1);
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+    $pdf->Cell(0,6,'',1,0,'C',true);
 
     //CELULAR 2
     $pdf->Ln(8);
@@ -414,7 +416,7 @@ include_once('fechas.php');
     $pdf->Cell(90,6,'CELULAR 2',0,0,'C',1);
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'07 de febrero del 2019',1,0,'C',true);
+    $pdf->Cell(0,6,'',1,0,'C',true);
 
     
     //inicia zona 8
