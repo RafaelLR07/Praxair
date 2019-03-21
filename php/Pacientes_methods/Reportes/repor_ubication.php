@@ -19,7 +19,9 @@
   
     $sql = "SELECT pacientes.municipio, pacientes.telefono, pacientes.familiar_responsable , pacientes.ciudad,pacientes.no_paciente, pacientes.nombre, altas.cedula, altas.fecha_alta
             FROM pacientes INNER JOIN altas
-            WHERE estado='$activo' 
+            WHERE 
+            ciudad!='' AND
+            estado='$activo' 
             AND (pacientes.cedula = altas.cedula) 
             AND (pacientes.ciudad!='$ubicacion')";
 

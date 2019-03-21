@@ -41,7 +41,9 @@
 
 	$sql = "SELECT pacientes.no_paciente, pacientes.nombre, altas.cedula, altas.fecha_alta
 			FROM pacientes INNER JOIN altas
-			WHERE estado='$activo' 
+			WHERE 
+			ciudad!='' AND
+			estado='$activo' 
 			AND (pacientes.cedula = altas.cedula) 
 			AND (altas.fecha_alta>='$fec_inicial' 
 			AND  altas.fecha_alta<='$fec_final')";
@@ -133,7 +135,9 @@
 	     if($ubicacion!='XALAPA'){
 	     	 $sql = "SELECT pacientes.ciudad,pacientes.no_paciente, pacientes.nombre, altas.cedula, altas.fecha_alta
 			FROM pacientes INNER JOIN altas
-			WHERE estado='$activo' 
+			WHERE 
+			ciudad!='' AND
+			estado='$activo' 
 			AND (pacientes.cedula = altas.cedula) 
 			AND (pacientes.ciudad!='$ubicacion')";
 	     }else{

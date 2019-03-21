@@ -9,6 +9,7 @@
     $q = $_POST['kuery_2'];
 
     $sql = "SELECT * FROM pacientes WHERE 
+        ciudad!='' AND
         estado='ACTIVO' AND(
 		cedula LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
