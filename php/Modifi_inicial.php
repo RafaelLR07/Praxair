@@ -138,21 +138,9 @@
                   <div class="form-group row">
                       <label for="Parentesco" class="col-sm-4 col-form-label col-form-label-lg">Parentesco</label>
                       <div class="col-sm-8">
-                          <select name="parentesco" class="form-control" id="Parentesco">
-                            
-                            <?php  
-                              $parentesco = $row['parentesco'];
-                              $sql = "SELECT * FROM cat_parentesco";
-
-                              foreach($db->query($sql) as $fila){
-                                if($parentesco == $fila['nombre']){
-                                  echo '<option value='.$parentesco.' selected>'.$parentesco.'</option>';
-                                }else {
-                                      echo '<option value='.$fila['nombre'].'>'.$fila['nombre'].'</option>' ;
-                                } 
-                              }
-                            ?>
-                          </select>
+                          <input name="parentesco" class="form-control" id="Parentesco" onkeyup="mayus(this)">
+                           
+                          
                       </div>
                   </div>
                   <div class="form-group row">
