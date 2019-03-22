@@ -66,7 +66,7 @@
 				<tr class='table-bordered'>
 					<td >Cédula	    </td>
 					<td >Nombre		</td>
-					<td >fecha_alta	</td>
+					<td >Fecha de alta	</td>
 					
 				</tr>
 			</thead>
@@ -162,8 +162,8 @@
 					<tr class='table-bordered'>
 						<td >Cédula	    </td>
 						<td >Nombre		</td>
-						<td >fecha_alta	</td>
-						<td >ciudad	</td>
+						<td >Fecha de alta	</td>
+						<td >Ciudad	</td>
 
 						
 				</tr>

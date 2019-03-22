@@ -54,7 +54,7 @@
 				<tr class='table-bordered'>
 					<td >Cédula	    </td>
 					<td >Nombre		</td>
-					<td >Cuidad		</td>
+					<td >Ciudad		</td>
 					<td >Municipio	</td>
 					<td >Telefono	</td>							
 					<td >Responsable</td>

@@ -159,7 +159,7 @@ include_once('../Visor/fechas.php');
 //header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
 
 //header('location: ../VisorMed.php?ido='.$no_user.'&id='.$_POST['cedula']);
-echo "<script>"."alert('Paciente registrado');"."</script>";
+//echo "<script>"."alert('Paciente registrado');"."</script>";
 header('location: ../Registro-Paciente_med.php');
 
 
