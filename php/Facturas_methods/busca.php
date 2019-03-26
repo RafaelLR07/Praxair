@@ -22,9 +22,8 @@
 	    
         }
 
-        echo $q.'<br>';
-        echo $q2.'<br>';
-		echo $salida;	
+       
+		echo $salida = $q." ".$q2;	
 		
 	  
 		

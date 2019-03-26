@@ -79,7 +79,7 @@
 					list($var1, $var2) = explode("/", $cedula_sin_spaces);
 					$cedula_uni = $var1.$var2;
 				}else{
-					$cedula_uni =trim($fila['cedula']);
+					$cedula_uni = trim($fila['cedula']);
 				}
 
 				$var_del_link = $var_del.$cedula_uni;
