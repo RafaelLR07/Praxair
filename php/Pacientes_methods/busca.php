@@ -70,10 +70,17 @@
 				
 				$vari_update = "modificar";
 				$var_del = "#delete_";
+				$largoCadena = strlen($fila['cedula']);
+				
+				if($largoCadena!=10){
 
-				$cedula_div = $fila['cedula'];
-				list($var1, $var2) = explode("/", $cedula_div);
-				$cedula_uni = $var1.$var2;
+					
+					$cedula_sin_spaces = trim($fila['cedula']);
+					list($var1, $var2) = explode("/", $cedula_sin_spaces);
+					$cedula_uni = $var1.$var2;
+				}else{
+					$cedula_uni =trim($fila['cedula']);
+				}
 
 				$var_del_link = $var_del.$cedula_uni;
 				$var_del_ever = "<a  href=".$var_del_link."
@@ -98,10 +105,7 @@
 							include('./mod_eliminar.php');
 
 							
-							
-							
-			
-								
+						
 	
 						
 			$salida.='				
@@ -114,7 +118,8 @@
 			$salida.="</tbody></table>";
 			
 		}else{
-			$salida.='<div class="alert alert-danger">Sin resultados</div>';		}
+			$salida.='<div class="alert alert-danger">Sin resultados</div>';		
+		}
 		echo $salida;	
 
 	   
