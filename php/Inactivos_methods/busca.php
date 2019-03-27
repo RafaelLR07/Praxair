@@ -3,16 +3,17 @@
     $database = new Connection();
     $db = $database->open();
     $inactivo="INACTIVO";
+    $def="DEFUNCIÓN";
       try{  
-        $sql = "SELECT no_paciente, cedula, nombre, ciudad, municipio, telefono, familiar_responsable
-		 FROM pacientes WHERE estado='$inactivo'" ;
+        $sql = "SELECT no_paciente, cedula, nombre, ciudad, municipio, telefono, estado
+		 FROM pacientes WHERE estado='$def' OR estado='$inactivo'" ;
         
         if(isset($_POST['consulta']))
         {
 		$q = $_POST['consulta'] ;
 		
         $sql = "SELECT * FROM pacientes WHERE
-		estado='$inactivo' AND(
+		 estado='$def' OR estado='$inactivo' AND(
 		cedula LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
         ciudad LIKE '%".$q."%' OR
@@ -40,7 +41,7 @@
 					<td >Ciudad		</td>
 					<td >Municipio	</td>
 					<td >Telefono	</td>							
-					<td >Responsable</td>
+					<td >Estado</td>
 					<td >Acción		</td>
 				</tr>
 			</thead>
@@ -71,7 +72,7 @@
 							<td>'.$fila['municipio'].'</td>
 							<td>'.$fila['ciudad'].'</td>
 							<td>'.$fila['telefono'].'</td>
-							<td>'.$fila['familiar_responsable'].'</td>
+							<td>'.$fila['estado'].'</td>
 							
 							<td>'.$var_del_ever.'</td>';
 							include('./mod_eliminar.php');

@@ -17,7 +17,7 @@
 			
         	$q = $_POST['fec_inicial'];
 			$q2 = $_POST['fec_final'];
-			$sql = "SELECT * FROM facturas 
+			$sql = "SELECT  * FROM facturas 
 			WHERE fec_ini>='$q' AND fec_ini<='$q2' order by paciente";	
 	    }
 

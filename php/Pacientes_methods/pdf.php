@@ -20,10 +20,11 @@
 
     $pdf = new PDF();
     $pdf->AliasNbPages();
-    $pdf->AddPage('L');
+    $pdf->AddPage('L','Legal');
 
     $pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
+    $pdf->Cell(50,6,'UNIDAD MEDICA',1,0,'C',1);
 	$pdf->Cell(30,6,'CEDULA',1,0,'C',1);
 	$pdf->Cell(80,6,'NOMBRE',1,0,'C',1);
     $pdf->Cell(30,6,'CIUDAD',1,0,'C',1);
@@ -36,6 +37,7 @@
     
     $resultado = $db -> query($sql);
     foreach($resultado as $row){
+        $pdf->Cell(50,6,utf8_decode('CLINICA HOSPITAL XALAPA'),1,0,'L');
         $pdf->Cell(30,6,utf8_decode($row['cedula']),1,0,'L');
         $pdf->Cell(80,6,utf8_decode($row['nombre']),1,0,'L');
         $pdf->Cell(30,6,utf8_decode($row['ciudad']),1,0,'L');

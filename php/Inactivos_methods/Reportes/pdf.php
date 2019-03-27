@@ -10,7 +10,7 @@
 
     $sql = "SELECT * FROM pacientes WHERE 
         ciudad!='' AND
-        estado='INACTIVO' AND(
+        estado='INACTIVO' OR  estado='DEFUNCIÓN' AND(
 		cedula LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
         ciudad LIKE '%".$q."%' OR
@@ -18,30 +18,40 @@
         telefono LIKE '%".$q."%' OR
 		familiar_responsable LIKE '%".$q."%')";
 
+     $sqll = "SELECT pacientes.estado AS estado, pacientes.nombre AS nombre, pacientes.edad AS edad, pacientes.cedula AS cedula, bajas.fecha AS fecha FROM pacientes INNER JOIN bajas 
+        WHERE pacientes.cedula=bajas.paciente";
+
     $pdf = new PDF();
     $pdf->AliasNbPages();
-    $pdf->AddPage('L');
+    $pdf->AddPage('L','Legal');
 
     $pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
-	$pdf->Cell(30,6,'CEDULA',1,0,'C',1);
-	$pdf->Cell(80,6,'NOMBRE',1,0,'C',1);
-    $pdf->Cell(30,6,'CIUDAD',1,0,'C',1);
-    $pdf->Cell(30,6,'MUNICIPIO',1,0,'C',1);
-    $pdf->Cell(30,6,'TELEFONO',1,0,'C',1);
-    $pdf->Cell(80,6,'RESPONSABLE',1,1,'C',1);
+    $pdf->Cell(50,15,'UNIDAD MEDICA',1,0,'C',1);
+    $pdf->Cell(80,15,'NOMBRE',1,0,'C',1);
+    $pdf->Cell(30,15,'EDAD',1,0,'C',1);
+	$pdf->Cell(30,15,'CEDULA',1,0,'C',1);
+    $pdf->Cell(50,15,'FECHA DE BAJA',1,0,'C',1);
+    $pdf->Cell(50,15,'FECHA DE DEFUNCION',1,0,'C',1);
+    $pdf->Cell(30,15,'OTRO MOTIVO DE BAJA',1,1,'L',1);
 	$pdf->SetFont('Arial','',10);
     
    
     
-    $resultado = $db -> query($sql);
+    $resultado = $db -> query($sqll);
     foreach($resultado as $row){
-        $pdf->Cell(30,6,utf8_decode($row['cedula']),1,0,'L');
-        $pdf->Cell(80,6,utf8_decode($row['nombre']),1,0,'L');
-        $pdf->Cell(30,6,utf8_decode($row['ciudad']),1,0,'L');
-        $pdf->Cell(30,6,utf8_decode($row['municipio']),1,0,'L');
-        $pdf->Cell(30,6,$row['telefono'],1,0,'L');
-        $pdf->Cell(80,6,utf8_decode($row['familiar_responsable']),1,1,'L');
+        $isDef = "";
+        if($row['estado']=='DEFUNCIÓN'){
+            $isDef = $row['fecha'];
+        }
+
+        $pdf->Cell(50,10,utf8_decode('CLINICA HOSPITAL XALAPA'),1,0,'L');
+        $pdf->Cell(80,10,utf8_decode($row['nombre']),1,0,'L');
+        $pdf->Cell(30,10,utf8_decode($row['edad']),1,0,'L');
+        $pdf->Cell(30,10,utf8_decode($row['cedula']),1,0,'L');
+        $pdf->Cell(50,10,utf8_decode($row['fecha']),1,0,'L');
+        $pdf->Cell(50,10,$isDef,1,0,'L');
+        $pdf->Cell(30,10,utf8_decode(""),1,1,'L');
        
 
         //$pdf->Cell($telefonoAncho,6,$row['telefono'],1,1,'C');
