@@ -9,17 +9,15 @@
 		try{
             $id = $_GET['id'];
             $fec_ini = $_POST['fec_ini'];
+            $fecha_fin = $_POST['fec_fin'];
 			$costo_u = $_POST['costo_u'];
 			$oxigeno = $_POST['oxigeno'];
 
 			date_default_timezone_set('America/Mexico_City');
-        	$fecha = $fec_ini;
         	$fechas_functions = new funciones_varias();
-        	$fecha_regis = $fecha;
-        	$fecha_ini = $fecha_regis;
-        	$fecha_fin = $fechas_functions->getFin($fecha_regis);
+        	//$fecha_fin = $fechas_functions->getFin($fecha_regis);
 
-        	$dias_fac = $fechas_functions->getDiasFac($fecha_ini,$fecha_fin);
+        	$dias_fac = $fechas_functions->getDiasFac($fec_ini,$fecha_fin);
         	$factura_dias = $dias_fac*$costo_u;
 			/*
 			echo 'fecha inicio'.$fecha_ini .'<br>';

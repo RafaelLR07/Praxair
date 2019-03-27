@@ -102,7 +102,7 @@
 				}
 				//si hay bajas
 				if(($bajasPacientes_kuery->rowCount())>0){
-					$cons_rect = "SELECT MAX(fecha) as fecha FROM recetas WHERE paciente='$paciente'";
+					$cons_rect = "SELECT fecha FROM bajas WHERE paciente='$paciente'";
 					$recetasPacientes_kuery = $db -> query($cons_rect);
 					foreach($recetasPacientes_kuery as $baja_down);
 					$q2 = $baja_down['fecha'];

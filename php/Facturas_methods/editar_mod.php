@@ -32,9 +32,13 @@
         
         <div class="form-group">
           <label for="fec_ini">Fecha de inicio</label>
-          <input value="<?php echo $row['fec_ini']?>" name="fec_ini" type="date" class="form-control" id="fec_ini" placeholder="Apellido Materno" >
+          <input value="<?php echo $row['fec_ini']?>" name="fec_ini" type="date" class="form-control" id="fec_ini">
         </div>
 
+        <div class="form-group">
+          <label for="fec_ini">Fecha de inicio</label>
+          <input value="<?php echo $row['fec_fin']?>" name="fec_fin" type="date" class="form-control" id="fec_fin">
+        </div>
         
 
               <div class="btn-group col-lg-offset-8">

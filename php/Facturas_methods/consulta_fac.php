@@ -1,11 +1,13 @@
-
 <div class="container">
 	<div class="input-group" id="cont_head">
+
   
   	<br>
 <div class="col-xs-12">
 		<div class="row">
 			<?php 	
+			 include('Visor/fechas.php');
+
 			date_default_timezone_set('America/Mexico_City');
 			$fecha = strftime("%Y-%m-%d");
 			 ?>
