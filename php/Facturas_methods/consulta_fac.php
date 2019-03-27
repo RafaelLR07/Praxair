@@ -24,10 +24,12 @@
 					como para reporte
 		    	-->
 		    	
-				<!-- Fecha de inicio -->				
+				<!-- Fecha de inicio -->
+				<label for="">Fecha inicial</label>				
 				<input value="<?php echo $fecha_inicio?>" type="date" name="fecha_ini" id="fecha_ini" type="text" onblur="document.getElementById('busca_form1').value=this.value">
 				
-				<!-- Fecha final -->				
+				<!-- Fecha final -->	
+				<label for="">Fecha final</label>			
 				<input value="<?php echo $fecha_final?>" type="date" name="fecha_end" id="fecha_end" type="text" onblur="document.getElementById('busca_form2').value=this.value">
 
 				<button id="buscar_fec" name="buscar_fec"  type="" class="btn btn-warning btn-lg" type="button">
@@ -36,17 +38,25 @@
 			</div>
 			<div>
 			
-				
+				<!-- Reporte de facturacion -->
 				<form action="Facturas_methods/formatos/mensual.php" class="form_pa_ac" method="POST">
 				<input type="hidden" name="kuery_1"  value="0"  id="busca_form1">
 				<input type="hidden" name="kuery_2"  value="0"  id="busca_form2">
 				
 				<button onclick="document.getElementById('busca_form1').value=document.getElementById('fecha_ini').value;document.getElementById('busca_form2').value=document.getElementById('fecha_end').value;" id="boton_pdf" name="PDF" type="" class="btn btn-warning btn-lg" type="button">
-              		<span class="glyphicon glyphicon-file"></span> Genera
+              		<span class="glyphicon glyphicon-file"></span> Factura
            		</button> 
 				</form>
 				
+				<!-- Reporte de censo -->
+				<form action="Facturas_methods/formatos/censo.php" class="form_pa_ac" method="POST">
+				<input type="" name="censo1"  value="0"  id="censo1">
+				<input type="" name="censo2"  value="0"  id="censo2">
 				
+				<button onclick="document.getElementById('censo1').value=document.getElementById('fecha_ini').value;document.getElementById('censo2').value=document.getElementById('fecha_end').value;" id="boton_pdf" name="PDF" type="" class="btn btn-warning btn-lg" type="button">
+              		<span class="glyphicon glyphicon-file"></span> Censo
+           		</button> 
+				</form>
 				
 					
 			</div>
