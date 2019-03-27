@@ -47,8 +47,7 @@
 					<td>FECHA FINAL</td>
 					<td>DIAS FACTURADOS</td>
 					<td>COSTO TOTAL</td>
-					<td>ACCION</td>
-
+					
 					
 				</tr>
 			</thead>
@@ -66,12 +65,12 @@
 					}
 				}
 				
-
+				/*
 				$var_up_link = "#edit_".$row['id_factura'];
 				$var_up_ever = "<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
-				
+				*/
 				$calculatorFechas = new funciones_varias();
 				
 
@@ -126,10 +125,8 @@
 							<td>'.$q.'</td>
 							<td>'.$q2.'</td>
 							<td>'.$dias_fac.'</td>
-							<td> $ '.$factura.'</td>
-							
-													
-							<td>'.$var_up_ever.'</td>';
+							<td> $ '.$factura.'</td>';					;
+							/*modal <td>'.$var_up_ever.'</td>'*/
 							include('./editar_mod.php');
 
 			$salida.='</tr>';

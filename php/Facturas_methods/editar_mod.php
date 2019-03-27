@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-group">
-          <label for="fec_ini">Fecha de inicio</label>
+          <label for="fec_ini">Fecha final</label>
           <input value="<?php echo $row['fec_fin']?>" name="fec_fin" type="date" class="form-control" id="fec_fin">
         </div>
         

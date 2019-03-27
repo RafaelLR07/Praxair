@@ -10,6 +10,12 @@
 
 			date_default_timezone_set('America/Mexico_City');
 			$fecha = strftime("%Y-%m-%d");
+
+			//instanciamos el objeto fechas para sacar los calculos
+			//propios de estas inicio y final de mes por defecto
+			$fechas_object = new funciones_varias();
+			$fecha_inicio = $fechas_object->get_init_month($fecha);
+			$fecha_final = $fechas_object->getFin($fecha);
 			 ?>
 		    <div class="formulario">
 		    	<!-- caja de la busqueda 
@@ -19,10 +25,10 @@
 		    	-->
 		    	
 				<!-- Fecha de inicio -->				
-				<input value="<?php echo $fecha?>" type="date" name="fecha_ini" id="fecha_ini" type="text" onblur="document.getElementById('busca_form1').value=this.value">
+				<input value="<?php echo $fecha_inicio?>" type="date" name="fecha_ini" id="fecha_ini" type="text" onblur="document.getElementById('busca_form1').value=this.value">
 				
 				<!-- Fecha final -->				
-				<input value="<?php echo '2019-03-30'?>" type="date" name="fecha_end" id="fecha_end" type="text" onblur="document.getElementById('busca_form2').value=this.value">
+				<input value="<?php echo $fecha_final?>" type="date" name="fecha_end" id="fecha_end" type="text" onblur="document.getElementById('busca_form2').value=this.value">
 
 				<button id="buscar_fec" name="buscar_fec"  type="" class="btn btn-warning btn-lg" type="button">
               		<span class="glyphicon glyphicon-search"></span> buscar

@@ -27,7 +27,7 @@
         	echo  'factura'. $id .'<br>';*/
 
         	
-			$sql = "UPDATE facturas SET fec_ini = '$fecha_ini', fec_fin = '$fecha_fin ', dias_fac = '$dias_fac', costo_fac = '$factura_dias'     WHERE id_factura = '$id'";
+			$sql = "UPDATE facturas SET fec_ini = '$fec_ini', fec_fin = '$fecha_fin ', dias_fac = '$dias_fac', costo_fac = '$factura_dias'     WHERE id_factura = '$id'";
 
 			//if-else statement in executing our query
 			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Empleado actualizado correctamente' : 'No se puso actualizar empleado';
