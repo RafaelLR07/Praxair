@@ -1,5 +1,6 @@
 <?php
     include('../Scripts/DBconexion.php');  
+    include('../Visor/fechas.php');
     
     $database = new Connection();
     $db = $database->open();
@@ -39,7 +40,7 @@
 				<tr class='table-bordered'>
 				 
 					<td>PACIENTE</td>
-					<td>ESTADO</td>
+					<td>NOMBRE</td>
 					<td>OXIGENO</td>
 					<td>COSTO</td>
 					<td>FECHA INICIO</td>
@@ -55,37 +56,77 @@
 			$special = "";
 			$oxi_val="";
 			foreach ($resultado as $row) {
-			
+				$q = $_POST['fec_inicial'];
+				$q2 = $_POST['fec_final'];
+
 				$skl = "SELECT id_oxigenos, tipo FROM oxigenos";
 				foreach ($db -> query($skl) as $fill){
 					if($row['oxigeno'] == $fill['id_oxigenos']){
 						$oxi_val = $fill['tipo'];
 					}
 				}
-								
-				/*$var_del_link = "#delete_".$row['paciente'];
-				$var_del_ever = "<a  href=".$var_del_link."
-				class='btn btn-danger btn-sm' data-toggle='modal'
-				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";*/
 				
+
 				$var_up_link = "#edit_".$row['id_factura'];
 				$var_up_ever = "<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
 				
-				//$var_aco = $row['costo_fac']+$var_aco;
-				$var_aco+=1;
+				$calculatorFechas = new funciones_varias();
+				
+
+				//Se guarda la cedula del paciente 
+				$paciente = $row['paciente'];
+				//Altas
+				$altaPaciente = "SELECT * FROM altas WHERE cedula='$paciente' AND fecha_alta>='$q' AND fecha_alta<='$q2' ";
+
+				//Baja
+				$bajaPaciente = "SELECT * FROM bajas WHERE paciente='$paciente' AND fecha>='$q' AND fecha<='$q2'";				
+				//consultas de altas y bajas
+				$altasPacientes_kuery = $db -> query($altaPaciente);
+				$bajasPacientes_kuery = $db -> query($bajaPaciente);
+				
+				/*
+				se valida si el paciente es dato de alta en este
+				mes se debera colocar como inicio de facturacion la
+				fecha de la receta
+
+				*/
+
+				//hay altas
+				if(($altasPacientes_kuery->rowCount())>0){
+					$cons_rect = "SELECT * FROM recetas WHERE paciente='$paciente'";
+					$recetasPacientes_kuery = $db -> query($cons_rect);
+					foreach($recetasPacientes_kuery as $rec);
+					$q = $rec['fecha'];
+				}
+				//si hay bajas
+				if(($bajasPacientes_kuery->rowCount())>0){
+					$cons_rect = "SELECT MAX(fecha) as fecha FROM recetas WHERE paciente='$paciente'";
+					$recetasPacientes_kuery = $db -> query($cons_rect);
+					foreach($recetasPacientes_kuery as $baja_down);
+					$q2 = $baja_down['fecha'];
+				}
+
+				//consulta el nombre del paciente
+				$skl = "SELECT nombre FROM pacientes WHERE cedula='$paciente'";
+				foreach ($db -> query($skl) as $name);
+
+				$dias_fac = $calculatorFechas->getDiasFac($q,$q2);
+				$factura = $dias_fac * $row['costo'];
+				$var_aco = $factura + $var_aco;
 
 				$salida.='<tr>
 	
 							<td>'.$row['paciente'].'</td>
-							<td>'.$row['estado'].'</td>
+							<td>'.$name['nombre'].'</td>
 							<td>'.$oxi_val.'</td>
 							<td> $ '.$row['costo'].'</td>
-							<td>'.$row['fec_ini'].'</td>
-							<td>'.$row['fec_fin'].'</td>
-							<td>'.$row['dias_fac'].'</td>
-							<td> $ '.$row['costo_fac'].'</td>
+							
+							<td>'.$q.'</td>
+							<td>'.$q2.'</td>
+							<td>'.$dias_fac.'</td>
+							<td> $ '.$factura.'</td>
 							
 													
 							<td>'.$var_up_ever.'</td>';
