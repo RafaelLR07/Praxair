@@ -33,7 +33,7 @@
 	$pdf->Cell(30,15,'CEDULA',1,0,'C',1);
     $pdf->Cell(50,15,'FECHA DE BAJA',1,0,'C',1);
     $pdf->Cell(50,15,'FECHA DE DEFUNCION',1,0,'C',1);
-    $pdf->Cell(30,15,'OTRO MOTIVO DE BAJA',1,1,'L',1);
+    $pdf->MultiCell(30,5,'OTRO MOTIVO DE BAJA',1,'L',1);
 	$pdf->SetFont('Arial','',10);
     
    
