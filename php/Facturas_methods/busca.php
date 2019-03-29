@@ -16,10 +16,10 @@
         {
 			
         	$q = $_POST['fec_inicial'];
-			$q2 = $_POST['fec_final'];
-			$sql = "SELECT  * FROM facturas 
-			WHERE fec_ini>='$q' AND fec_ini<='$q2' order by paciente";	
-	    }
+					$q2 = $_POST['fec_final'];
+					$sql = "SELECT  * FROM facturas 
+									WHERE fec_ini>='$q' AND fec_ini<='$q2' order by paciente";	
+	    	}
 
 		$salida="";
 		$var_aco=0;
@@ -58,6 +58,9 @@
 				$q = $_POST['fec_inicial'];
 				$q2 = $_POST['fec_final'];
 
+				//apartado para kue pueda vizualisarse los nombres de los oxigenos y
+				//no su cedula
+				
 				$skl = "SELECT id_oxigenos, tipo FROM oxigenos";
 				foreach ($db -> query($skl) as $fill){
 					if($row['oxigeno'] == $fill['id_oxigenos']){
@@ -114,19 +117,23 @@
 				$dias_fac = $calculatorFechas->getDiasFac($q,$q2);
 				$factura = $dias_fac * $row['costo'];
 				$var_aco = $factura + $var_aco;
-
+				
+				$var_up_link = "#edit_".$row['id_factura'];
+				$var_up_ever = "<a  href=".$var_up_link."
+				class='btn btn-success btn-sm' data-toggle='modal'
+				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
+				
 				$salida.='<tr>
 	
 							<td>'.$row['paciente'].'</td>
 							<td>'.$name['nombre'].'</td>
 							<td>'.$oxi_val.'</td>
 							<td> $ '.$row['costo'].'</td>
-							
 							<td>'.$q.'</td>
 							<td>'.$q2.'</td>
 							<td>'.$dias_fac.'</td>
-							<td> $ '.$factura.'</td>';					;
-							/*modal <td>'.$var_up_ever.'</td>'*/
+							<td> $ '.$factura.'</td>
+							<td>'.$var_up_ever.'</td>';
 							include('./editar_mod.php');
 
 			$salida.='</tr>';
@@ -134,7 +141,7 @@
 			}
 
 			$salida.="</tbody></table>";
-			 $value = "$ ".$var_aco." pesos";
+			$value = "$ ".$var_aco." pesos";
 			$mensaje.= '<div class="row">';
 			$mensaje.='<div style="height: 60px;" class="alert alert-warning col-md-6 ">'.'Total de facturacion del mes:   '.$value.'</div>';
 
