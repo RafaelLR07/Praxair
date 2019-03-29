@@ -37,6 +37,11 @@
                         <label for="numempleado">Indicaciones</label>
                         <textarea style="height: 100px;" maxlength="150" value="" name="indicaciones" type="text" class="form-control" id="numempleado" placeholder="Indicaciones" required></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="numempleado">Fecha de la baja</label>
+                        <input value="" name="fecha_doun" type="date" class="form-control" id="fecha_doun" required/>
+                    </div>
                      
                      <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>

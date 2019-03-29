@@ -10,6 +10,8 @@
 		$cedula = $_GET['id'];
 		$no_user = $_GET['ido'];
 
+		$fecha = $_POST['fecha_doun'];
+
 		
 	 $_POST['diagnostico'];
 	 $_POST['indicaciones'];
@@ -36,12 +38,11 @@
 
 			$stmt2 = $db->prepare("INSERT INTO bajas(no_baja, fecha,paciente) VALUES (:no_baja, :fecha, :paciente)");
 
-			date_default_timezone_set('America/Mexico_City');
-        	$fecha = strftime("%Y-%m-%d");
+			//date_default_timezone_set('America/Mexico_City');
+        	//$fecha = strftime("%Y-%m-%d");
 			 $stmt2->execute(
 				array(
-                
-					':no_baja' => "1" ,
+                	':no_baja' => "1" ,
                     ':fecha' => $fecha ,
                     ':paciente' => $cedula 
                      ));	
