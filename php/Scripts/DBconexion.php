@@ -3,7 +3,7 @@
 
 Class Connection{
  
-	private $server = "mysql:host=localhost;dbname=praxair_reall";
+	private $server = "mysql:host=localhost;dbname=praxair_v2";
 	private $username = "root";
 	private $password = "";
 	private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES  \'UTF8\'');

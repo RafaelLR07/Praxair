@@ -8,11 +8,12 @@ include('../Scripts/DBconexion.php');
     /**
     * 
     */
+    $database = new Connection();
+    $db = $database->open();
     class add_first_rect
     {
         
-        $database = new Connection();
-        $db = $database->open();
+        
 
         function getMedic($medico){
          
@@ -23,7 +24,7 @@ include('../Scripts/DBconexion.php');
 
         }
 
-        public function insertar_first_receta($oxigeno,$cedula,$fech,$no_serie,$diagnostico,$indicaciones, $estado, $medico )
+        function insertar_first_receta($oxigeno,$cedula,$fech,$no_serie,$diagnostico,$indicaciones, $estado, $medico )
         
         {
         try{
@@ -36,26 +37,26 @@ include('../Scripts/DBconexion.php');
             $costo = $row['precio'];
             }
         
-        //$id_usuario = $_POST['idd'];
-        $fecha = $fech;
-        date_default_timezone_set('America/Mexico_City');
-        $dat = date("Y/m/d", strtotime($fecha));
+                //$id_usuario = $_POST['idd'];
+                $fecha = $fech;
+                date_default_timezone_set('America/Mexico_City');
+                $dat = date("Y/m/d", strtotime($fecha));
 
-		$stmt = $db->prepare("INSERT INTO recetas (serie, fecha, diagnostico, indicaciones, estado, paciente, oxigeno, medico, costo)
-        VALUES (:serie, :fecha, :diagnostico, :indicaciones, :estado, :paciente, :oxigeno, :medico, :costo)");
-        //instrucción if-else en la ejecución de nuestra declaración preparada
-        $_SESSION['message'] = ( 
-            $stmt->execute(
-                array( ':serie'=> $no_serie, 
-                ':fecha'=> $dat, 
-                ':diagnostico'=> $diagnostico, 
-                ':indicaciones'=> $indicaciones, 
-                ':estado'=> $estado, 
-                ':paciente'=> $cedula, 
-                ':oxigeno'=> $oxigeno, 
-                ':medico'=> $medico, 
-                ':costo'=> $costo)) ) ? 'Empleado guardado correctamente' : 'Algo salió mal. No se puede agregar miembro';
-		
+                $stmt = $db->prepare("INSERT INTO recetas (serie, fecha, diagnostico, indicaciones, estado, paciente, oxigeno, medico, costo)
+                VALUES (:serie, :fecha, :diagnostico, :indicaciones, :estado, :paciente, :oxigeno, :medico, :costo)");
+                //instrucción if-else en la ejecución de nuestra declaración preparada
+                $_SESSION['message'] = ( 
+                    $stmt->execute(
+                        array( ':serie'=> $no_serie, 
+                        ':fecha'=> $dat, 
+                        ':diagnostico'=> $diagnostico, 
+                        ':indicaciones'=> $indicaciones, 
+                        ':estado'=> $estado, 
+                        ':paciente'=> $cedula, 
+                        ':oxigeno'=> $oxigeno, 
+                        ':medico'=> $medico, 
+                        ':costo'=> $costo)) ) ? 'Empleado guardado correctamente' : 'Algo salió mal. No se puede agregar miembro';
+                
 	
 	}
 	catch(PDOException $e){

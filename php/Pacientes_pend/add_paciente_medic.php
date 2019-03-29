@@ -15,9 +15,9 @@ include('../Recetas_methods/add_first_rec.php');
     
     
 
-	$database = new Connection();
-	$db = $database->open();
-	try{
+      $database = new Connection();
+      $db = $database->open();
+      try{
         //hacer uso de una declaración preparada para prevenir la inyección de sql
         echo $name;
         $var_estado='ACTIVO';
@@ -75,22 +75,22 @@ include('../Recetas_methods/add_first_rec.php');
 
         */
 
-       $anadir_receta = new add_first_rec();
-       $medico = $añadir_receta->getMedic($_GET['id']);
-	   $id_oxigenos = $_POST['oxigeno'];
-       $fecha = $_POST['fecha'];
-       $serie=$_POST['no_serie'];
-       $diagnostico = $_POST['diagnostico'];
-       $indicaciones = $_POST['indicaciones'];      
-       $paciente = $_POST['paciente'];
-       $oxigeno = $_POST['oxigeno'];
-       $medico = $_POST['medico'];
-       //$oxigeno,$cedula,$fech,$no_serie,$diagnostico,$indicaciones, $estado, $medico
-       $anadir_receta->insertar_first_receta($id_oxigenos,$paciente,$fecha,$serie,$diagnostico, $indicaciones, $var_estado, $medico);
+          $anadir_receta = new add_first_rec();
+          $medico = $añadir_receta->getMedic($_GET['id']);
+          $id_oxigenos = $_POST['oxigeno'];
+          $fecha = $_POST['fecha'];
+          $serie=$_POST['no_serie'];
+          $diagnostico = $_POST['diagnostico'];
+          $indicaciones = $_POST['indicaciones'];      
+          $paciente = $_POST['paciente'];
+          $oxigeno = $_POST['oxigeno'];
+          $medico = $_POST['medico'];
+          //$oxigeno,$cedula,$fech,$no_serie,$diagnostico,$indicaciones, $estado, $medico
+          $anadir_receta->insertar_first_receta($id_oxigenos,$paciente,$fecha,$serie,$diagnostico, $indicaciones, $var_estado, $medico);
 
 
                 
-	catch(PDOException $e){
+    } catch(PDOException $e){
 		$_SESSION['message'] = $e->getMessage();
 	}
 
