@@ -30,12 +30,12 @@
     
                     <div class="form-group">
                         <label for="numempleado">Razón</label>
-                        <textarea maxlength="100" style="height: 100px;" value="" name="diagnostico" type="text" class="form-control" id="numempleado" placeholder="Razón de la baja" required></textarea>
+                        <textarea maxlength="100" style="height: 100px;" onkeyup="javascript:this.value = this.value.toUpperCase()"  value="" name="diagnostico" type="text" class="form-control" id="numempleado" placeholder="Razón de la baja" required></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="numempleado">Indicaciones</label>
-                        <textarea style="height: 100px;" maxlength="150" value="" name="indicaciones" type="text" class="form-control" id="numempleado" placeholder="Indicaciones" required></textarea>
+                        <textarea style="height: 100px;" maxlength="150" value="" name="indicaciones" type="text" class="form-control" id="numempleado" placeholder="Indicaciones" required onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
                     </div>
 
                     <div class="form-group">
