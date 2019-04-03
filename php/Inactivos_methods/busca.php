@@ -13,7 +13,7 @@
 		$q = $_POST['consulta'] ;
 		
         $sql = "SELECT * FROM pacientes WHERE
-		 estado='$def' OR estado='$inactivo' AND(
+		 estado='$inactivo' AND(
 		cedula LIKE '%".$q."%' OR
 		nombre LIKE '%".$q."%' OR
         ciudad LIKE '%".$q."%' OR
