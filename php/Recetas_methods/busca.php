@@ -63,7 +63,11 @@
 			<tbody>";
 			
 			foreach ($resultado as $fila) {
-				
+				$oxigeno = $fila['oxigeno'];
+				$kuery_oxi = "SELECT tipo from oxigenos WHERE id_oxigenos='$oxigeno'";
+				$resultOxi_kuery = $db->query($kuery_oxi);
+				foreach ($resultOxi_kuery as $oxi_name);
+
 				//$var_link = "modificar.php?id=".$vari_update;
 				$var_id = $fila['id_recetas'];
 				$vari_update = "modificar";
@@ -82,7 +86,7 @@
 				$salida.='<tr>
 							<td>'.$fila['serie'].'</td>
 							<td>'.$fila['fecha'].'</td>
-							<td>'.$fila['oxigeno'].'</td>
+							<td>'.$oxi_name['tipo'].'</td>
 							<td>'.$fila['paciente'].'</td>';
 
 							
