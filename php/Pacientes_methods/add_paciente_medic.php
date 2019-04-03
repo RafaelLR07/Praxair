@@ -19,7 +19,8 @@ include_once('../Visor/fechas.php');
 	$db = $database->open();
 	try{
         //hacer uso de una declaración preparada para prevenir la inyección de sql
-        $medico = $name;
+        $medico = $no_user;
+
         $var_estado='ACTIVO';
         $pat_p = $_POST['ap_paterno'];
         $mat_p = $_POST['ap_materno'];
@@ -67,31 +68,40 @@ include_once('../Visor/fechas.php');
             ? 'Empleado guardado correctamente' : 'Algo salió mal. No se puede agregar miembro';
 		
 	
+
+
+  //-.-------------------------------------------------------------------------
+
+
         $oxigeno = $_POST['oxigeno'];
         $query_oxi = "SELECT * FROM oxigenos WHERE id_oxigenos='$oxigeno'";
         foreach ($db->query($query_oxi) as $row);
-
-            
+   
         
         //insertar en recetas
         $stmt2 = $db->prepare("INSERT INTO recetas(serie,fecha,diagnostico, indicaciones, estado, paciente, oxigeno, medico, costo) VALUES (:serie,:fecha,:diagnostico, :indicaciones, :estado, :paciente, :oxigeno, :medico, :costo) ");
         date_default_timezone_set('America/Mexico_City');
         $fecha = strftime("%Y-%m-%d");
+
         
         //echo $fecha;
         $stmt2->execute(array(
-                      ':serie' => $_POST['serie'] ,
+                      ':serie' => $_POST['serie'],
                       ':fecha' => $fecha,
                       ':diagnostico' => $_POST['diagnostico'] ,
                       ':indicaciones' => $indicaciones ,
-                      ':estado' => $var_estado,
-                      ':paciente' => $_POST['cedula'] ,
-                      ':oxigeno' => $row['id_oxigenos'] ,
-                      ':medico' => $medico ,
+                      ':estado' => 'SIN',
+                      ':paciente' =>  $_POST['cedula']  ,
+                      ':oxigeno' => $row['id_oxigenos'],
+                      ':medico' => $medico,
                       ':costo' => $row['precio'] ,
 
         ));
 
+       
+
+       
+        
         //insertar en facturas
         $stmt3 = $db->prepare("INSERT INTO facturas (oxigeno, costo, dias_fac, fec_ini, fec_fin, paciente, estado, costo_fac) 
           VALUES (:oxigeno, :costo, :dias_fac, :fec_ini, :fec_fin, :paciente, :estado, :costo_fac)");
@@ -118,7 +128,7 @@ include_once('../Visor/fechas.php');
 
         //echo var_dump($fecha_fin);
        // echo $fecha_fin;
-
+        
         $stmt3->execute(array(
                       ':oxigeno' => $row['id_oxigenos'] ,
                       ':costo' => $row['precio'] ,
@@ -131,7 +141,8 @@ include_once('../Visor/fechas.php');
 
         ));
 
-         $stmt4 = $db->prepare("INSERT INTO altas (fecha_alta, cedula) 
+        
+        $stmt4 = $db->prepare("INSERT INTO altas (fecha_alta, cedula) 
           VALUES (:fecha_alta, :cedula)");
 
             
@@ -160,7 +171,8 @@ include_once('../Visor/fechas.php');
 
 //header('location: ../VisorMed.php?ido='.$no_user.'&id='.$_POST['cedula']);
 //echo "<script>"."alert('Paciente registrado');"."</script>";
-header('location: ../Registro-Paciente_med.php');
+
+//header('location: ../Registro-Paciente_med.php');
 
 
 

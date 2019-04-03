@@ -9,7 +9,7 @@
 	<div class="col-xs-12">
 		<div class="row">
 		    <div class="formulario">
-		    	<input type="text" name="caja_busqueda" id="caja_busqueda" type="text" class="form-control" placeholder="Buscar" onblur="document.getElementById('busca2').value=this.value">
+		    	<input type="text" name="caja_busqueda" id="caja_busqueda" type="text" class="form-control" placeholder="Buscar">
 				
 			</div>
 			<div>
