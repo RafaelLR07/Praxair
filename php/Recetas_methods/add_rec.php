@@ -29,7 +29,7 @@ include_once('../Visor/fechas.php');
                 ':fecha'=> $dat, 
                 ':diagnostico'=> $_POST['diagnostico'], 
                 ':indicaciones'=> $_POST['indicaciones'], 
-                ':estado'=> $_POST['estado'], 
+                ':estado'=> 'SIN', 
                 ':paciente'=> $_POST['paciente'], 
                 ':oxigeno'=> $_POST['oxigeno'], 
                 ':medico'=> $_POST['medico'], 

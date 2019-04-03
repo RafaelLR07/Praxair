@@ -136,7 +136,7 @@ include_once('../Visor/fechas.php');
                       ':fec_ini' => $fecha_ini,
                       ':fec_fin' => $fecha_fin ,
                       ':paciente' => $_POST['cedula'],
-                      ':estado' => $var_estado ,
+                      ':estado' => $_POST['diagnostico'] ,
                       ':costo_fac' => $factura_dias
 
         ));
@@ -172,7 +172,7 @@ include_once('../Visor/fechas.php');
 //header('location: ../VisorMed.php?ido='.$no_user.'&id='.$_POST['cedula']);
 //echo "<script>"."alert('Paciente registrado');"."</script>";
 
-//header('location: ../Registro-Paciente_med.php');
+header('location: ../Registro-Paciente_med.php');
 
 
 
