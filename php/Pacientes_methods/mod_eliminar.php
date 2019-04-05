@@ -1,6 +1,4 @@
 
-
-
 <!-- Delete -->
 <div class="modal fade" id="delete_<?php echo $cedula_uni; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -20,22 +18,42 @@
                 <form method="POST" action="./Pacientes_methods/borrar_pac.php?ido=<?php echo $no_user ;?>&id=<?php echo $fila['cedula']; ?>" >
 
                     <div class="form-group">
-                        <label for="numempleado">Estado</label>
-                        <select  name="estatus" type="text" class="form-control" id="estatus"  required>
-                            <option value="INACTIVO">INACTIVO</option>
-                            <option value="DEFUNCION">DEFUNCION</option>
-
-                        </select>
-                    </div>
-    
-                    <div class="form-group">
                         <label for="numempleado">Razón</label>
-                        <textarea maxlength="100" style="height: 100px;" onkeyup="javascript:this.value = this.value.toUpperCase()"  value="" name="diagnostico" type="text" class="form-control" id="numempleado" placeholder="Razón de la baja" required></textarea>
+                        <!--<textarea maxlength="100" style="height: 100px;" onkeyup="javascript:this.value = this.value.toUpperCase()"  value="" name="diagnostico" type="text" class="form-control" id="numempleado" placeholder="Razón de la baja" required></textarea>-->
+                        <select name="opciones" id="opciones" class="form-control">
+                           <option value="baja">BAJA</option> 
+                           <option value="voluntaria">BAJA VOLUNTARIA</option> 
+                           <option value="mejoria">BAJA DE MEJORIA</option> 
+                           <option value="def">BAJA POR DEFUNCIÓN</option> 
+                        </select>
+                        
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="numempleado">Indicaciones</label>
-                        <textarea style="height: 100px;" maxlength="150" value="" name="indicaciones" type="text" class="form-control" id="numempleado" placeholder="Indicaciones" required onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
+                    <div class="mejoria" id="mejoria" style="display: none;">
+
+                        <div class="form-group">
+                            <label for="numempleado">Diagnostico</label>
+                            <textarea style="height: 100px;" maxlength="150" value="diagnostico" name="diagnostico" type="text" class="form-control" id="diagnostico" placeholder="Diagnostico"  onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
+                        </div>
+                         
+                        <div class="form-group">
+                            <label for="indicaciones">Indicaciones</label>
+                            <textarea style="height: 100px;" maxlength="150" value="indicaciones" name="indicaciones" type="text" class="form-control" id="numempleado" placeholder="Indicaciones"  onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="voluntaria" id="voluntaria" style="display: none;">
+
+                        <div class="form-group">
+                            <label for="numempleado">Solicitador de baja</label>
+                            <select name="solicitador" id="" class="form-control" >
+                                <option value="" selected>PACIENTE</option> 
+                                <option value="">FAMILIAR REGISTRADO</option> 
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -48,14 +66,43 @@
                  <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Si </button>
             </div>
                 </form>
-
-
-
-
-
+                <!-- boton de prueba -->
+                <button onclick="saludar();">saludar</button>
 			</div>
            
 
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    
+    $('#opciones').on('change',function(){
+        let valor = $(this).val();
+        if(valor==="mejoria"){
+            $('#voluntaria').css('display','none');
+            $('#mejoria').css('display','block');
+            $('#mejoria').fadeIn();
+            
+
+
+        }if(valor==="voluntaria"){
+            $('#mejoria').css('display','none');
+            $('#voluntaria').css('display','block');
+
+            
+
+        }
+        if(valor==="baja"||valor==="def"){
+            $('#mejoria').css('display','none');
+            $('#voluntaria').css('display','none');
+
+            
+
+        }
+
+       
+    })
+
+
+</script>

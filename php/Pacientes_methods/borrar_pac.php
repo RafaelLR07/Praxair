@@ -6,19 +6,47 @@
 	if(isset($_GET['id'])){
 		$database = new Connection();
 		$db = $database->open();
-		$valor=$_POST['estatus'];
+		$valor=$_POST['opciones'];
 		$cedula = $_GET['id'];
 		$no_user = $_GET['ido'];
 
+		$var_diag = $_POST['diagnostico'];
+		$var_indi = $_POST['indicaciones'];
+
 		$fecha = $_POST['fecha_doun'];
 
-		
-	 $_POST['diagnostico'];
-	 $_POST['indicaciones'];
+		switch ($valor) {
+			case 'baja':
+				$valor='INACTIVO';
+				$var_diag="NO HAY DIAGNOSTICO";
+				$var_indi="NO HAY INDICACIONES";
+				break;
 
+			case 'voluntaria':
+				$valor='INACTIVO';
+				$var_diag="NO HAY DIAGNOSTICO";
+				$var_indi="NO HAY INDICACIONES";
+				break;
+			
+			case 'mejoria':
+				$valor='INACTIVO';
+				break;
+
+			case 'def':
+				$valor='DEFUNCIÓN';
+				$var_diag="DEFUNCIÓN";
+				$var_indi="NO HAY INDICACIONES";
+				break;
+
+			default:
+				echo '<p>'.'Fallo'.'</p>';
+				break;
+		}
+	
 
 			
 		try{
+
 			$sql = "UPDATE pacientes SET estado = '".$valor."' WHERE cedula= '".$cedula."'";
 
 			$stmt = $db->prepare("INSERT INTO salidas_dos(diagnostico, indicaciones,cedula_paci) VALUES (:diagnostico, :indicaciones, :cedula_paci)");
@@ -31,8 +59,8 @@
 			$_SESSION['message'] = ( $stmt->execute(
 				array(
                 
-					':diagnostico' => $_POST['diagnostico'] ,
-                    ':indicaciones' => $_POST['indicaciones'] ,
+					':diagnostico' => $var_diag ,
+                    ':indicaciones' => $var_indi,
                     ':cedula_paci' => $cedula , 
                      )	));
 
@@ -40,9 +68,10 @@
 
 			//date_default_timezone_set('America/Mexico_City');
         	//$fecha = strftime("%Y-%m-%d");
+        	$no_baja="95799661";
 			 $stmt2->execute(
 				array(
-                	':no_baja' => "1" ,
+                	':no_baja' => ((int)$no_baja)+1,
                     ':fecha' => $fecha ,
                     ':paciente' => $cedula 
                      ));	

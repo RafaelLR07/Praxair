@@ -188,9 +188,9 @@
 
 				$factuMirror_kuery = $db->query($cons_factm);
 				if(($factuMirror_kuery->rowCount())>0){
-					foreach($facturasMirror_kuery as $factu_update);
-					$q = $factu_update['fec_ini'];
-					$q2 = $factu_update['fec_fin'];
+					foreach($factuMirror_kuery as $factu);
+					$q = $factu['fec_ini'];
+					$q2 = $factu['fec_fin'];
 				}
 
 
