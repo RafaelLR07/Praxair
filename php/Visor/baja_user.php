@@ -8,6 +8,7 @@ $pdf = new PDF();
     $id = $_GET['id'];
     //cedula de empleado
     $ido=$_GET['ido'];
+    $soli=$_GET['rem'];
     //Fecha de hoy
 	$database = new Connection();
     $db = $database->open();
@@ -19,7 +20,7 @@ $pdf = new PDF();
     $sk_med = "SELECT no_empleado, nombre FROM medicos WHERE no_empleado='$ido'";
 
     //pacientes
-    $sk_pac = "SELECT nombre,cedula, indicaciones, diagnostico FROM pacientes WHERE cedula='$id'";
+    $sk_pac = "SELECT nombre,cedula, indicaciones, diagnostico,familiar_responsable,parentesco FROM pacientes WHERE cedula='$id'";
 
     //indicaciones y razon
     $sk_indicaciones = "SELECT indicaciones,diagnostico,cedula_paci FROM salidas_dos WHERE cedula_paci='$id'";
@@ -61,39 +62,53 @@ $pdf = new PDF();
 
     $pdf->Ln(15);
     $pdf->setX(20);
-    $pdf->Cell(180,10,utf8_decode('Paciente: '),'');
+    $pdf->SetFont('arial','B',10);
+    $pdf->Cell(180,10,utf8_decode('DR(A): '),'');
 
     $pdf->Ln(10);
     $pdf->setX(20);
-    $pdf->Cell(180,10,utf8_decode($dates_baja['cedula_paci'].'  '.$dates['nombre']),0,0,'J',false);
-
-    $pdf->Ln(10);
-    $pdf->setX(20);
-    $pdf->Cell(180,10,utf8_decode('Razon: '),0,0,'C',false);
-
-    $pdf->Ln(10);
-    $pdf->setX(20);
-    $pdf->Cell(180,10,utf8_decode($dates_baja['diagnostico']),'');
-    
-    $pdf->Ln(25);
-    $pdf->setX(20);
-    $pdf->Cell(175,5,utf8_decode('Indicaciones'),0,0,'C',false);
+    $pdf->SetFont('arial','B',10);
+    $pdf->Cell(180,10,utf8_decode('SUBDIRECTOR MÉDICO DE LA CLINICA HOSPITAL ISSSTE XALAPA'),0,0,'J',false);
 
     $pdf->Ln(25);
     $pdf->setX(20);
-    $pdf->MultiCell(175,5,utf8_decode($dates_baja['indicaciones']),'');
+    $pdf->SetFont('helvetica','',10);
+    $pdf->Cell(180,10,utf8_decode('ASUNTO: BAJA VOLUNTARIA DE OXIGENO MEDICINAL DOMICILIARIO'),0,0,'R',false);
 
-  
-   
+    $pdf->Ln(20);
+    $pdf->setX(20);
+     $pdf->MultiCell(180,7,utf8_decode('POR ESTE CONDUCTO Y DE LA MANERA MÁS ATENTA, ME PERMITO SOLICITAR SU INTERVENCIÓN ANTE QUIEN CORRESPONDA, A EFECTO DE QUE SE LLEVE A CABO EL TRÁMITE DE BAJA DEL SERVICIO DE OXIGENO MEDICINAL DOMICILIARIO, MISMO QUE A LA FECHA SUMINISTRA LA EMPRESA PRAXAIR MÉXICO S. DE R. L. DE C.V.  AL, C. '.$dates['nombre']).' CON CEDULA: '.$dates['cedula'],'');
+
+    $pdf->Ln(15);
+    $pdf->setX(20);
+    $pdf->MultiCell(180,7,utf8_decode('LO ANTERIOR, POR SER SU VOLUNTAD QUE SE LE RETIRE DICHO SERVICIO DE MANERA TEMPORAL, YA QUE SE ENCUENTRA RECIBIENDO ATENCIÓN MÉDICA EN LA CIUDAD DE MÉXICO, D.F.   POR LO QUE MEDIANTE ESTE DOCUMENTO, SE LIBERA DE CUALQUIER RESPONSABILIDAD A LA CLINICA HOSPITAL ISSSTE XALAPA.'),'');
     
+    $pdf->Ln(25);
+    $pdf->setX(20);
+    $pdf->Cell(175,5,utf8_decode('SIN OTRO PARTICULAR, LE AGRADEZCO LA ATENCIÓN AL PRESENTE.'),0,0,'L',false);
+
+    $pdf->Ln(25);
+    $pdf->setX(20);
+    $pdf->Cell(175,5,utf8_decode('A T E N T A M E N T E'),0,0,'C',false);
+
     
+    $remitente="";
+    $rol_rem="";
+    if($soli=='paciente'){
+        $remitente=$dates['nombre'];
+        $rol_rem="PACIENTE";
+     }
+    if($soli=='fami'){
+        $remitente=$dates['familiar_responsable'];
+        $rol_rem= $dates['parentesco'];
+    }
     $pdf->ln(10);
     $pdf->Cell(30);
-    $pdf->Cell(120,10,utf8_decode($var_bajador),0,0,'C',false);
+    $pdf->Cell(120,10,utf8_decode($remitente),0,0,'C',false);
     
     $pdf->ln(4);
     $pdf->Cell(30);
-    $pdf->Cell(120,10,utf8_decode('Firma del '.$var_tipo),0,0,'C',false);
+    $pdf->Cell(120,10,utf8_decode($rol_rem).' DEL PACIENTE',0,0,'C',false);
     
    
 

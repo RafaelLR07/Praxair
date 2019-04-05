@@ -2,16 +2,19 @@
 	
 	include_once('../Scripts/DBconexion.php');   
 	include_once('../Visor/fechas.php');
-
+	
 	if(isset($_GET['id'])){
 		$database = new Connection();
+		$soli = $_POST['solicitador'];
 		$db = $database->open();
+		$volunta="";
 		$valor=$_POST['opciones'];
 		$cedula = $_GET['id'];
 		$no_user = $_GET['ido'];
 
 		$var_diag = $_POST['diagnostico'];
 		$var_indi = $_POST['indicaciones'];
+		
 
 		$fecha = $_POST['fecha_doun'];
 
@@ -26,6 +29,7 @@
 				$valor='INACTIVO';
 				$var_diag="NO HAY DIAGNOSTICO";
 				$var_indi="NO HAY INDICACIONES";
+				$volunta="true";
 				break;
 			
 			case 'mejoria':
@@ -114,6 +118,10 @@
 	$action=6;
 
 	//header('location: ../index.php');
-	header('location: ../Visor_baja.php?ido='.$no_user.'&id='.$cedula);
+	if($volunta=="true"){
+		header('location: ../Visor_baja.php?rem='.$soli.'&ido='.$no_user.'&id='.$cedula);
+	}else{
+		header('location: ../index.php');
+	}
 
 ?>

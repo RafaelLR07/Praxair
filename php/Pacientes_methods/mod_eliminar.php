@@ -49,8 +49,8 @@
                         <div class="form-group">
                             <label for="numempleado">Solicitador de baja</label>
                             <select name="solicitador" id="" class="form-control" >
-                                <option value="" selected>PACIENTE</option> 
-                                <option value="">FAMILIAR REGISTRADO</option> 
+                                <option value="paciente" selected>PACIENTE</option> 
+                                <option value="fami">FAMILIAR REGISTRADO</option> 
                             </select>
                         </div>
 
@@ -67,7 +67,7 @@
             </div>
                 </form>
                 <!-- boton de prueba -->
-                <button onclick="saludar();">saludar</button>
+                
 			</div>
            
 
@@ -105,4 +105,7 @@
     })
 
 
+    function saludar(argument) {
+        alert("saludar");
+    }
 </script>

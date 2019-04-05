@@ -64,6 +64,7 @@
 
         $id = $_GET['id'];
         $ido = $_GET['ido'];
+        $soli = $_GET['rem'];
         
 
         ?>
@@ -74,7 +75,7 @@
       <!--<center><iframe src="Visor/dist/Presentación1.pdf" width="700" height="780" style=""></iframe></center>-->
       <div class="baja">
         <h3>Baja de usuario</h3>
-        <center><iframe  src="./Visor/baja_user.php?ido=<?php echo $ido; ?>&id=<?php echo $id; ?>"></iframe></center>
+        <center><iframe  src="./Visor/baja_user.php?rem=<?php echo $soli; ?>&ido=<?php echo $ido; ?>&id=<?php echo $id; ?>"></iframe></center>
       </div>
 
 
