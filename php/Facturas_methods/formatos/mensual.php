@@ -84,6 +84,7 @@
 
                 $dias_fac = $calculatorFechas->getDiasFac($q,$q2);
                 $factura = $dias_fac * $row['costo'];
+                $factura_pretty = number_format($factura,2);
                 $var_aco = $factura + $var_aco;
 
                 
@@ -95,7 +96,7 @@
         $pdf->Cell(30,6,$q,1,0,'L');
         $pdf->Cell(25,6,utf8_decode($q2),1,0,'L');
         $pdf->Cell(20,6,$dias_fac,1,0,'C');
-        $pdf->Cell(35,6,utf8_decode($factura),1,1,'C');
+        $pdf->Cell(35,6,utf8_decode($factura_pretty),1,1,'C');
        
 
         //$pdf->Cell($telefonoAncho,6,$row['telefono'],1,1,'C');
@@ -104,6 +105,7 @@
     $pdf->SetFillColor(232,232,232);
     $pdf->Ln(5);
     $pdf->Cell(150,6,'TOTAL FACTURADO DEL MES',1,0,'C',1);
+    $var_aco = number_format($var_aco,2);
     $pdf->Cell(120,6,$var_aco,1,-1,'C',1);
 
 

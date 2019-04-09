@@ -16,7 +16,7 @@
               </div>
               <div class="form-group">
                 <label for="materno">Costo</label>
-                <input name="costo" type="number" class="form-control" id="costo" min="1" max="10000" placeholder="Ingrese Precio" required>
+                <input name="costo" type="number" class="form-control" id="costo" step="0.01" placeholder="Ingrese Precio" required>
               </div>
               <div class="btn-group col-lg-offset-8">
                 <p id="solo_letras" ></p>

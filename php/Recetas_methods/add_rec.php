@@ -20,6 +20,27 @@ include_once('../Visor/fechas.php');
         $fecha = $_POST['fecha'];
         $dat = date("Y/m/d", strtotime($fecha));
 
+        $oxiheno = $_POST['oxigeno'];
+        $cadena = "";
+        //general concentrador y cilindro
+        $litros = $_POST['litros'];
+        $dosis = $_POST['dosis'];
+        $tiempo = $_POST['tiempo'];
+
+        //cpap bpap
+        $rampa = $_POST['rampa'];
+        $cms = $_POST['cms'];
+
+        if($oxiheno==1||$oxiheno==2){
+            $cadena =  $litros.$dosis.$tiempo;
+        }
+
+        if($oxiheno==3||$oxiheno==4){
+            $cadena =  $litros.$dosis.$tiempo;
+        }
+
+
+
 		$stmt = $db->prepare("INSERT INTO recetas (serie, fecha, diagnostico, indicaciones, estado, paciente, oxigeno, medico, costo)
         VALUES (:serie, :fecha, :diagnostico, :indicaciones, :estado, :paciente, :oxigeno, :medico, :costo)");
         //instrucción if-else en la ejecución de nuestra declaración preparada
@@ -87,8 +108,22 @@ include_once('../Visor/fechas.php');
 	$database->close();
 
 
+    //preveer si es la primera receta
 
- header('location: ../modificar.php?id='.$id_usuario);
+    $recetasQuery="SELECT COUNT(*) as suma FROM RECETAS WHERE paciente='$id_usuario'";
+
+    $resultRecQuery = $db->query($recetasQuery);
+    foreach ($resultRecQuery as $firstRec);
+    $total_recetas = $firstRec['suma'];
+    if($total_recetas>1){
+        header('location: ../modificar.php?id='.$id_usuario);       
+    }else{
+        
+        header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
+
+    }
+
+ 
  
 
 	

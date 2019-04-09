@@ -201,6 +201,7 @@
 
 				$dias_fac = $calculatorFechas->getDiasFac($q,$q2);
 				$factura = $dias_fac * $row['costo'];
+				$factura_pretty = number_format($factura,2)  ;
 				$var_aco = $factura + $var_aco;
 				
 				
@@ -214,7 +215,7 @@
 							<td>'.$q.'</td>
 							<td>'.$q2.'</td>
 							<td>'.$dias_fac.'</td>
-							<td> $ '.$factura.'</td>
+							<td> $ '.$factura_pretty.'</td>
 							<td>'.$var_up_ever.'</td>';
 							include('./editar_mod.php');
 
@@ -223,6 +224,7 @@
 			}
 
 			$salida.="</tbody></table>";
+			$var_aco = number_format($var_aco,2);
 			$value = "$ ".$var_aco." pesos";
 			$mensaje.= '<div class="row">';
 			$mensaje.='<div style="height: 60px;" class="alert alert-warning col-md-6 ">'.'Total de facturacion del mes:   '.$value.'</div>';
@@ -243,7 +245,8 @@
 
 			include('./monDel.php');
 			//$mensaje = 
-			$mensaje .= '<div class="alert alert-success col-md-6">'.'Presupuesto anual:    '.$co['monto'].$button.$button2.'</div>';
+			$monto = number_format($co['monto'],2);
+			$mensaje .= '<div class="alert alert-success col-md-6">'.'Presupuesto anual:    '.$monto.$button.$button2.'</div>';
 
 			$mensaje .= '</div>';
 			echo $mensaje;
