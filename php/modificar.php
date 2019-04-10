@@ -149,7 +149,7 @@
                   <div class="form-group row">
                       <label for="Email" class="col-sm-4 col-form-label col-form-label-lg">Correo Electronico</label>
                       <div class="col-sm-8">
-                        <input  value="<?php echo $row['email_familiar'] ?>" name="email" type="Email" class="form-control form-control-sm" id="Email" placeholder="Correo Electrico" >
+                        <input  value="<?php echo $row['email_familiar'] ?>" name="email" type="Email" class="form-control form-control-sm" id="Email" placeholder="Correo Electronico" >
                       </div>
                   </div>
                   <div class="form-group row">
@@ -245,7 +245,7 @@
                     <div class="form-group col-lg-offset-8">
                         <input onclick="limpiar_area();" type="button" class="btn btn-warning btn-md" value="Limpiar"/>
                         <button name="editar" type="submit" class="btn btn-success btn-md">
-                        Registrar
+                        Actualizar
                         </button>
                     </div>                    
               </div>

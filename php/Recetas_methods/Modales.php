@@ -38,7 +38,7 @@
 
               <div class="form-group">
                 <label for="">Fecha</label>
-                <input value="<?php echo $fecha?>" name="fecha" type="date" class="form-control" id="" placeholder="Fecha" readonly required >
+                <input value="<?php echo $fecha?>" name="fecha" type="date" class="form-control" id="" placeholder="Fecha"  required >
               </div>
               <div class="form-group">
                   <label for="Suministro" class="col-sm-3 col-form-label col-form-label-lg">Suministro</label>

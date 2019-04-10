@@ -54,7 +54,7 @@
                     <div class="form-group row">
                       <label for="Paciente" class="col-sm-4 col-form-label col-form-label-lg">Numero de Paciente</label>
                       <div class="col-sm-8">
-                        <input  min="1" max="99999999999" onkeyup="mayus(this)" name="no_paciente" type="number" class="form-control form-control-sm" id="Paciente" placeholder="Numero Paciente" required>
+                        <input  min="1" max="99999999999" onkeyup="mayus(this)" name="no_paciente" type="number" class="form-control form-control-sm" id="Paciente" placeholder="Numero Paciente" >
                       </div>
                     </div>
                     <div class="form-group row">
@@ -78,19 +78,19 @@
                     <div class="form-group row">
                       <label for="telefono" class="col-sm-4 col-form-label col-form-label-lg">Telefono</label>
                       <div class="col-sm-8">
-                        <input min="1111111" max="9999999999" name="telefono" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono" required>
+                        <input name="telefono" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono" >
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="fecha" class="col-sm-4 col-form-label col-form-label-lg">Fecha de nacimiento</label>
                       <div class="col-sm-8">
-                        <input name="fecha_nac" type="date" class="form-control form-control-sm" id="fecha" placeholder="Fecha de nacimiento"  required>
+                        <input name="fecha_nac" type="date" class="form-control form-control-sm" id="fecha" placeholder="Fecha de nacimiento">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="edad" class="col-sm-4 col-form-label col-form-label-lg">Edad</label>
                       <div class="col-sm-8">
-                        <input min="10" max="120" name="edad" type="number" class="form-control form-control-sm" id="edad" placeholder="Edad" required>
+                        <input min="10" max="120" name="edad" type="number" class="form-control form-control-sm" id="edad" placeholder="Edad">
                       </div>
                     </div>
               </div>
@@ -134,13 +134,13 @@
                   <div class="form-group row">
                       <label for="Email" class="col-sm-4 col-form-label col-form-label-lg">Correo Electronico</label>
                       <div class="col-sm-8">
-                        <input maxlength="45" name="email" type="Email" class="form-control form-control-sm" id="Email" placeholder="Correo Electrico" required>
+                        <input maxlength="45" name="email" type="Email" class="form-control form-control-sm" id="Email" placeholder="Correo Electronico">
                       </div>
                   </div>
                   <div class="form-group row">
                       <label for="telefono" class="col-sm-4 col-form-label col-form-label-lg">Telefono</label>
                       <div class="col-sm-8">
-                        <input min="1111111" max="9999999999" name="telefono_fav" id="telefono_fav" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono" required>
+                        <input name="telefono_fav" id="telefono_fav" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono">
                       </div>
                   </div>
                   <div class="form-group row"></div><br><br><br>
@@ -167,50 +167,50 @@
                     <div class="form-group row">
                       <label for="municipio" class="col-sm-4 col-form-label col-form-label-lg">Municipio</label>
                       <div class="col-sm-8">
-                        <input maxlength="45" onkeyup="mayus(this)" name="municipio" type="text" class="form-control form-control-sm" id="municipio" placeholder="Municipio" required>
+                        <input maxlength="45" onkeyup="mayus(this)" name="municipio" type="text" class="form-control form-control-sm" id="municipio" placeholder="Municipio">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="colonia" class="col-sm-4 col-form-label col-form-label-lg">Colonia</label>
                       <div class="col-sm-8">
-                        <input maxlength="45" onkeyup="mayus(this)" name="colonia" type="text" class="form-control form-control-sm" id="colonia" placeholder="Colonia" required>
+                        <input maxlength="45" onkeyup="mayus(this)" name="colonia" type="text" class="form-control form-control-sm" id="colonia" placeholder="Colonia" >
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="cp" class="col-sm-4 col-form-label col-form-label-lg">Codigo Postal</label>
                       <div class="col-sm-8">
-                        <input min="1" max="1000000000" name="cp" type="number" class="form-control form-control-sm" id="cp" placeholder="Codigo Postal" required>
+                        <input name="cp" type="number" class="form-control form-control-sm" id="cp" placeholder="Codigo Postal">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="calle" class="col-sm-4 col-form-label col-form-label-lg">Calle</label>
                       <div class="col-sm-8">
-                        <input onkeyup="mayus(this)" name="calle" type="text" class="form-control form-control-sm" id="calle" placeholder="Calle" required>
+                        <input onkeyup="mayus(this)" name="calle" type="text" class="form-control form-control-sm" id="calle" placeholder="Calle">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="calle2" class="col-sm-4 col-form-label col-form-label-lg">Entre Calle 1</label>
                       <div class="col-sm-8">
-                        <input maxlength="45" onkeyup="mayus(this)" name="calle_1" type="text" class="form-control form-control-sm" id="calle1" required placeholder="Entre Calle">
+                        <input maxlength="45" onkeyup="mayus(this)" name="calle_1" type="text" class="form-control form-control-sm" id="calle1" placeholder="Entre Calle">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="calle2" class="col-sm-4 col-form-label col-form-label-lg">Entre Calle 2</label>
                       <div class="col-sm-8">
-                        <input maxlength="45" onkeyup="mayus(this)" name="calle_2" type="text" class="form-control form-control-sm" id="calle2"  required placeholder="Entre Calle">
+                        <input maxlength="45" onkeyup="mayus(this)" name="calle_2" type="text" class="form-control form-control-sm" id="calle2" placeholder="Entre Calle">
                       </div>
                     </div>  
 
                     <div class="form-group row">
                       <label for="exterior" class="col-sm-4 col-form-label col-form-label-lg">Numero Exterior</label>
                       <div class="col-sm-8">
-                        <input name="num_ext"  type="number" class="form-control form-control-sm" id="exterior" placeholder="Numero Exterior" required>
+                        <input name="num_ext"  type="number" class="form-control form-control-sm" id="exterior" placeholder="Numero Exterior">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="interior" class="col-sm-4 col-form-label col-form-label-lg">Numero Interior</label>
                       <div class="col-sm-8">
-                        <input name="num_int"  type="number" class="form-control form-control-sm" id="interior" placeholder="Numero Interior" required>
+                        <input name="num_int"  type="number" class="form-control form-control-sm" id="interior" placeholder="Numero Interior">
                       </div>
                     </div>                                                                   
                 </div>  
@@ -225,7 +225,7 @@
               <div class="form-group col-md-12">
                     <div class="form-group">
                       <label for="observaciones">Observaciones:</label>
-                      <textarea maxlength="200" onkeyup="mayus(this)" name="observaciones"  class="form-control" rows="16"required ></textarea>
+                      <textarea maxlength="200" onkeyup="mayus(this)" name="observaciones"  class="form-control" rows="16"></textarea>
                     </div>
                     <div class="form-group col-lg-offset-8">
                         <input type="button" class="btn btn-warning btn-md" value="Limpiar"/>
