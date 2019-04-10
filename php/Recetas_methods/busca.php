@@ -21,7 +21,7 @@
 	try{  
 		
 		$q2 = $_POST['valor2'] ;
-        $sql = "SELECT id_recetas,paciente, serie, fecha, oxigeno FROM 
+        $sql = "SELECT id_recetas,diagnostico,indicaciones,medico,paciente, serie, fecha, oxigeno FROM 
 		recetas WHERE paciente='$q2'";
         
         if(isset($_POST['consul']))
@@ -70,12 +70,12 @@
 
 				//$var_link = "modificar.php?id=".$vari_update;
 				$var_id = $fila['id_recetas'];
-				$vari_update = "modificar";
-				$var_del = "#delete_";
+				$vari_update = "#modificar";
+				$var_del = "#edit_";
 				$var_del_link = $var_del.$fila['id_recetas'];
 				$var_del_ever = "<a  href=".$var_del_link."
-				class='btn btn-danger btn-sm' data-toggle='modal'
-				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
+				class='btn btn-success btn-sm' data-toggle='modal'
+				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
 				
 								
 				$var_link = $vari_update.".php?id=".$var_id;
@@ -87,22 +87,16 @@
 							<td>'.$fila['serie'].'</td>
 							<td>'.$fila['fecha'].'</td>
 							<td>'.$oxi_name['tipo'].'</td>
-							<td>'.$fila['paciente'].'</td>';
-
-							
-							
-							
+							<td>'.$fila['paciente'].'</td>
+							<td>'.$var_del_ever.'</td>';
+					
 							include('./borrar_editar_mod.php');
 
 							
 								
 	
 						
-			$salida.='				
-			
-            
-    
-						</tr>';
+			$salida.='</tr>';
 	
 			}
 			$salida.="</tbody></table>";

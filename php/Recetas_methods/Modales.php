@@ -131,10 +131,10 @@
             </div>
 
             <!-------------------------------------------------------- -->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for=""> Estado </label>
                 <input name="estado" type="text" class="form-control" id="" placeholder="activo" readonly  required>
-              </div>
+              </div> -->
               
               <div class="form-group">
                 <label for="">Paciente</label>
