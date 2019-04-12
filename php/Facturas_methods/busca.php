@@ -245,8 +245,8 @@
 
 			include('./monDel.php');
 			//$mensaje = 
-			$monto = number_format($co['monto'],2);
-			$mensaje .= '<div class="alert alert-success col-md-6">'.'Presupuesto anual:    '.$monto.$button.$button2.'</div>';
+			$monto ="$".number_format($co['monto'],2);
+			$mensaje .= '<div class="alert alert-success col-md-6">'.'Presupuesto:    '.$monto.$button.$button2.'</div>';
 
 			$mensaje .= '</div>';
 			echo $mensaje;

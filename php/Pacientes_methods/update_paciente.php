@@ -73,6 +73,6 @@
 		$_SESSION['message'] = 'Complete el formulario de edición';
 	}
 
-	header('location: ../index.php');
+	header('location: ../modificar.php?id='.$cedula);
 
 ?>

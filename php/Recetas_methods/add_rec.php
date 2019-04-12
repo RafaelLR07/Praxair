@@ -109,7 +109,7 @@ include_once('../Visor/fechas.php');
 
 
     //preveer si es la primera receta
-
+    /*
     $recetasQuery="SELECT COUNT(*) as suma FROM RECETAS WHERE paciente='$id_usuario'";
 
     $resultRecQuery = $db->query($recetasQuery);
@@ -121,9 +121,9 @@ include_once('../Visor/fechas.php');
         
         header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
 
-    }
+    }*/
 
- 
+     header('location: ../modificar.php?id='.$id_usuario);       
  
 
 	

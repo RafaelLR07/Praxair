@@ -83,33 +83,29 @@
             <div class="general" id="general">
               <h4>Indicaciones</h4>
               <div class="form-group row">
-                      <label for="Paterno" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto</label>
+                      <label for="Paterno" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto(litros)</label>
                       <div class="col-sm-8">
                         <input name="litros" type="number"  class="form-control form-control-sm" id="dos_min" placeholder="Cantidad de litros" maxlength="20" required>
                       </div>
                     </div>
                   
-
-                  <div class="form-group row">
-                      <label for="dosis" class="col-sm-4 col-form-label col-form-label-lg">Hora de dosis</label>
-                      <div class="col-sm-8">
-                        <select name="dosis" class="form-control form-control-sm" id="hora_dosis" placeholder="Indicaciones" required>
-
-                            <option value="" >Seleccione la parte del dia de aplicacion</option>  
-                            <option value="continuo">Uso continuo</option>                
-                            <option value="noche">En la noche</option>
-                            <option value="mañana">En la mañana</option>
-                            <option value="mañana&noche">Mañana y noche</option>
-                        </select>
-                      </div>
-                  </div>
-                 
+          
                  <div class="form-group row">
                       <label for="tiempo" class="col-sm-4 col-form-label col-form-label-lg">Tiempo</label>
                       <div class="col-sm-8">
                         <input id="tiempo" name="tiempo" type="number" class="form-control form-control-sm" id="tiempo" placeholder="Cantidad de horas" maxlength="20" required>
                       </div>
                    </div>
+
+
+                 <div class="form-group row">
+                      <label for="dosis" class="col-sm-4 col-form-label col-form-label-lg">Aclaraciones</label>
+                      <div class="col-sm-8">
+                        <textarea name="dosis" class="form-control" maxlength="96">
+                          
+                        </textarea>
+                      </div>
+                  </div>
 
           
             </div>
@@ -152,7 +148,8 @@
                 try{
                  
                   foreach ($db->query($consulta) as $fila){
-
+                    //si el medico usuario quiere modificar la receta solo podra seleccionar 
+                    //su nombre
                     if($name == $fila['nombre']){
                     ?>
                     <option selected value="<?php  echo $fila['no_empleado']  ?>"><?php  echo $fila['nombre'] ?></option>  
@@ -182,7 +179,6 @@
               
 
               <div class="btn-group col-lg-offset-8">
-                <button class="btn btn-warning btn-group-lg">Limpiar</button>
                 <button type="submit" class="btn btn-primary btn-group-lg">Registrar</button>
               </div>
             </form>
