@@ -1,7 +1,7 @@
 
 <?php
     include_once('../../Scripts/DBconexion.php');  
-    include 'template.php';
+    //include 'template.php';
     
     $database = new Connection();
     $db = $database->open();
@@ -26,7 +26,7 @@
             AND (pacientes.cedula = altas.cedula) 
             AND (altas.fecha_alta>='$f_in' 
             AND  altas.fecha_alta<='$f_end')";
-
+    /*
     $pdf = new PDF();
     $pdf->AliasNbPages();
     $pdf->AddPage('L','Legal');
@@ -66,6 +66,40 @@
 
     $pdf->Output();
     }
-    
-
+    */
+    header('Content-type:application/xls');
+      header('Content-Disposition: attachment; filename=usuarios.xls');
     ?>  
+
+    <table border="1">
+        <tr  style="background-color:pink;">
+            <th>UNIDAD MEDICA</th> 
+            <th>CEDULA</th>
+            <th>NOMBRE</th>
+            <th>CIUDAD</th>
+            <th>MUNICIPIO</th>
+            <th>TELEFONO</th>
+            <th>RESPONSABLE</th>
+            <th>FECHA DE ALTA</th>
+        </tr>
+        <?php 
+        $result = $db->query($sql);
+        foreach ($result as $paciente) {
+            ?>
+            <tr>
+                <td><?php echo "CLINICA HOSPITAL XALAPA"; ?></td>
+                <td><?php echo $paciente['cedula']; ?></td>
+                <td><?php echo utf8_decode($paciente['nombre']); ?></td>
+                <td><?php echo utf8_decode($paciente['ciudad']); ?></td>
+                <td><?php echo utf8_decode($paciente['municipio']); ?></td>
+                <td><?php echo utf8_decode($paciente['telefono']); ?></td>
+                <td><?php echo utf8_decode($paciente['familiar_responsable']); ?></td>
+                <td><?php echo utf8_decode($paciente['fecha_alta']); ?></td>
+            </tr>
+            <?php
+        }}
+
+         ?>
+
+
+    </table>

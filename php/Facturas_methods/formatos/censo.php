@@ -34,17 +34,21 @@
     $oxi_val = "";
     foreach($resultado as $row){
     $paciente = $row['paciente'];
+    echo $paciente;
 
     $getPacien = "SELECT pacientes.nombre AS nombre, pacientes.cedula AS cedula,altas.fecha_alta AS alta,pacientes.calle AS calle, pacientes.numero_exterior AS numero,pacientes.colonia AS colonia,pacientes.cp AS cp, pacientes.municipio AS municipio 
-
     FROM pacientes INNER JOIN altas 
-    WHERE pacientes.cedula=altas.cedula and pacientes.cedula='$paciente'  ORDER BY cedula";
+    WHERE pacientes.cedula=altas.cedula /*and pacientes.cedula='$paciente'  ORDER BY pacientes.cedula*/";
 
-    $getMedic="SELECT medico,MAX(fecha), diagnostico FROM recetas WHERE paciente='$paciente'";
+        $getMedic="SELECT medico,MAX(fecha), diagnostico FROM recetas WHERE paciente='$paciente'";
 
         $result_getMed = $db->query($getMedic);
         $result_getPac = $db->query($getPacien);
-        foreach ($result_getPac as $pac);
+        foreach ($result_getPac as $paci);
+        echo "paciente".$paciente."<br>";
+        echo "valor es ";
+        echo var_dump($paci);
+        echo "<br>";
         foreach ($result_getMed as $med);
         //Se guarda la cedula del paciente 
      
@@ -59,12 +63,12 @@
 
        */
         $pdf->Cell(50,18,utf8_decode('CLINICA HOSPITAL XALAPA'),1,0,'L');
-        $pdf->Cell(80,18,utf8_decode($pac['nombre']),1,0,'L');
-        $pdf->Cell(30,18,utf8_decode($pac['cedula']),1,0,'L');
-        $pdf->Cell(20,18,utf8_decode($pac['alta']),1,0,'L');
+        $pdf->Cell(80,18,utf8_decode($paci['nombre']),1,0,'L');
+        $pdf->Cell(30,18,utf8_decode($paci['cedula']),1,0,'L');
+        $pdf->Cell(20,18,utf8_decode($paci['alta']),1,0,'L');
         $valory = $pdf->GetY();
         $valorx = $pdf->GetX();
-        $pdf->MultiCell(70,9,$pac['calle'].$pac['numero']." ".$pac['colonia'].$pac['cp'].$pac['municipio'] ,1,'L');
+        $pdf->MultiCell(70,9,$paci['calle'].$paci['numero']." ".$paci['colonia'].$paci['cp'].$paci['municipio'] ,1,'L');
         $pdf->SetY($valory);
         $pdf->SetX($valorx+70);
         $pdf->Cell(40,18,utf8_decode($med['medico']),1,0,'L');

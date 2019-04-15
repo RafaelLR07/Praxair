@@ -96,8 +96,8 @@
 				$salida.='<tr>
 							<td>'.$fila['cedula'].'</td>
 							<td>'.$fila['nombre'].'</td>
-							<td>'.$fila['municipio'].'</td>
 							<td>'.$fila['ciudad'].'</td>
+							<td>'.$fila['municipio'].'</td>
 							<td>'.$fila['telefono'].'</td>
 							<td>'.$fila['familiar_responsable'].'</td>
 							
