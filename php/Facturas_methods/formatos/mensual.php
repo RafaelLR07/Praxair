@@ -17,6 +17,10 @@
     $pdf->AliasNbPages();
     $pdf->AddPage('L');
    
+    $fechas = new funciones_varias();
+    $fecha_valor = $fechas->getMonth($q);
+    $pdf->Cell(0,10, utf8_decode('Facturación de Pacientes del mes de '.$fecha_valor),0,0,'C');
+    $pdf->Ln(20);
     $pdf->SetFillColor(232,232,232);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->Cell(30,6,'CEDULA',1,0,'C',1);
@@ -92,11 +96,11 @@
         $pdf->Cell(30,6,utf8_decode($row['paciente']),1,0,'L');
         $pdf->Cell(80,6,utf8_decode($name['nombre']),1,0,'L');
         $pdf->Cell(30,6,utf8_decode($oxi_val),1,0,'L');
-        $pdf->Cell(20,6,utf8_decode($row['costo']),1,0,'L');
+        $pdf->Cell(20,6,utf8_decode('$'.$row['costo']),1,0,'L');
         $pdf->Cell(30,6,$q,1,0,'L');
         $pdf->Cell(25,6,utf8_decode($q2),1,0,'L');
         $pdf->Cell(20,6,$dias_fac,1,0,'C');
-        $pdf->Cell(35,6,utf8_decode($factura_pretty),1,1,'C');
+        $pdf->Cell(35,6,utf8_decode('$'.$factura_pretty),1,1,'C');
        
 
         //$pdf->Cell($telefonoAncho,6,$row['telefono'],1,1,'C');
@@ -106,7 +110,7 @@
     $pdf->Ln(5);
     $pdf->Cell(150,6,'TOTAL FACTURADO DEL MES',1,0,'C',1);
     $var_aco = number_format($var_aco,2);
-    $pdf->Cell(120,6,$var_aco,1,-1,'C',1);
+    $pdf->Cell(120,6,'$'.$var_aco,1,-1,'C',1);
 
 
     $pdf->Output();

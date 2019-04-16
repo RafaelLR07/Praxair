@@ -62,6 +62,8 @@ include_once('../Visor/fechas.php');
 
         $sql = "UPDATE recetas SET serie = '$serie', fecha = '$dat', diagnostico = '$diagnostico',indicaciones = '$indicacione', estado = 'SIN', paciente = '$paciente', oxigeno = '$oxigeno',medico='$medico', costo='$costo' WHERE id_recetas = '$idRec' AND paciente= '$idPac'";
 
+
+
        $db->exec($sql); 
     //insertar en facturas
         /*
@@ -129,7 +131,7 @@ include_once('../Visor/fechas.php');
         header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
 
     }*/
-    header('location: ../modificar.php?id='.$paciente);
+    header('location: ../modificar.php?id='.$paciente3);
  
  
 

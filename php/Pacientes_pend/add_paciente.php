@@ -7,7 +7,13 @@ include_once('../Scripts/DBconexion.php');
 	$db = $database->open();
 	try{
         //hacer uso de una declaración preparada para prevenir la inyección de sql
-        
+        $planta = "";
+        if(isset($_POST['pa']) && $_POST['pa']=='true'){
+            $planta="PLANTA ALTA";
+        }else{
+            $planta="PLANTA BAJA";
+        }
+        echo $_POST['pa'];
         $var_estado='ACTIVO';
         $pat_p = $_POST['ap_paterno'];
         $mat_p = $_POST['ap_materno'];
@@ -25,10 +31,10 @@ include_once('../Scripts/DBconexion.php');
 
         $stmt = $db->prepare("INSERT INTO pacientes(cedula, no_paciente, nombre, telefono, fecha_nacimiento, edad, calle, numero_exterior, numero_interior, colonia,
         cp, ciudad, municipio, entre_calle1, entre_calle2, familiar_responsable, parentesco, email_familiar, telefono_familiar,
-        observaciones, estado) 
+        observaciones, estado,planta) 
         VALUES (:cedula, :no_paciente, :nombre, :telefono, :fecha_nacimiento, :edad, :calle, :numero_exterior, :numero_interior, :colonia,
 :cp, :ciudad, :municipio, :entre_calle1, :entre_calle2, :familiar_responsable, :parentesco, :email_familiar, :telefono_familiar,
-:observaciones, :estado)");
+:observaciones, :estado,:planta)");
         //instrucción if-else en la ejecución de nuestra declaración preparada
         $_SESSION['message'] = ( $stmt->execute(
             array(
@@ -53,7 +59,8 @@ include_once('../Scripts/DBconexion.php');
                     ':email_familiar' => $_POST['email'] , 
                     ':telefono_familiar' => $_POST['telefono'] ,
                     ':observaciones' => $_POST['observaciones'] , 
-                    ':estado' => $var_estado
+                    ':estado' => $var_estado,
+                    ':planta' => $planta
                 )) ) 
             ? 'Empleado guardado correctamente' : 'Algo salió mal. No se puede agregar miembro';
 		
@@ -71,7 +78,7 @@ include_once('../Scripts/DBconexion.php');
 
 //header('location:../modificar.php?id='.$_POST['cedula'].'');
 
-header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
+//header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
 
 //header('location: ../index.php');
 

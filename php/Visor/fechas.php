@@ -9,7 +9,20 @@
 		{
 			# code...
         }
-        
+       
+
+         public function getMonth($date){
+            list($anio, $mess, $dia) = explode("-", $date);
+            
+            
+            $mes = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+            $fecha = $mes[$mess-1] ." del ". $anio;
+            return $fecha;
+
+        }
+
+
         public function obtener_fecha(){
         	date_default_timezone_set('America/Mexico_City');
             $dias = array("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo");

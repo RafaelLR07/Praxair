@@ -31,12 +31,25 @@ include_once('../Visor/fechas.php');
         $rampa = $_POST['rampa'];
         $cms = $_POST['cms'];
 
+        //Registro general de indicaciones
+
+        //normal cilindro o concentrador
         if($oxiheno==1||$oxiheno==2){
-            $cadena =  $litros.$dosis.$tiempo;
+            $cadena =  $litros.'/'.$dosis.'/'.$tiempo;
+        }
+        //especial + cilindro
+        if($oxiheno==5||$oxiheno==6){
+             $cadena =  $litros.'|'.$dosis.'|'.$tiempo.'|'.$rampa.'|'.$cms;
         }
 
+        //especial + concentrador
+        if($oxiheno==7||$oxiheno==8){
+            $cadena =  $litros.'|'.$dosis.'|'.$tiempo.'|'.$rampa.'|'.$cms;
+        }
+
+        //bpap o cpap --> caso poco probable
         if($oxiheno==3||$oxiheno==4){
-            $cadena =  $litros.$dosis.$tiempo;
+            $cadena =  $rampa.'-'.$cms;
         }
 
 
@@ -49,7 +62,7 @@ include_once('../Visor/fechas.php');
                 array( ':serie'=> $_POST['no_serie'], 
                 ':fecha'=> $dat, 
                 ':diagnostico'=> $_POST['diagnostico'], 
-                ':indicaciones'=> $_POST['indicaciones'], 
+                ':indicaciones'=> $cadena, 
                 ':estado'=> 'SIN', 
                 ':paciente'=> $_POST['paciente'], 
                 ':oxigeno'=> $_POST['oxigeno'], 
@@ -109,7 +122,7 @@ include_once('../Visor/fechas.php');
 
 
     //preveer si es la primera receta
-    /*
+    $action=2;
     $recetasQuery="SELECT COUNT(*) as suma FROM RECETAS WHERE paciente='$id_usuario'";
 
     $resultRecQuery = $db->query($recetasQuery);
@@ -119,11 +132,11 @@ include_once('../Visor/fechas.php');
         header('location: ../modificar.php?id='.$id_usuario);       
     }else{
         
-        header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
+          header('location: ../Visor.php?action='.$action. '&id='.$id_usuario);
 
-    }*/
+    }
 
-     header('location: ../modificar.php?id='.$id_usuario);       
+     //header('location: ../modificar.php?id='.$id_usuario);       
  
 
 	

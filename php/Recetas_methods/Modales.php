@@ -43,7 +43,7 @@
               <div class="form-group">
                   <label for="Suministro" class="col-sm-3 col-form-label col-form-label-lg">Suministro</label>
                   <div class="col-sm-9">
-                      <select  name ="oxigeno" id="oxi" class="form-control" onchange="getOxi();" >
+                      <select  name ="oxigeno" id="oxi" class="form-control" onchange="getOxig(this.value);" >
                         <option selected>Eliga tipo de oxigeno</option>
                         <?php
                          $database = new Connection();
@@ -83,7 +83,7 @@
             <div class="general" id="general">
               <h4>Indicaciones</h4>
               <div class="form-group row">
-                      <label for="Paterno" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto(litros)</label>
+                      <label for="Dosis" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto(litros)</label>
                       <div class="col-sm-8">
                         <input name="litros" type="number"  class="form-control form-control-sm" id="dos_min" placeholder="Cantidad de litros" maxlength="20" required>
                       </div>
@@ -91,7 +91,7 @@
                   
           
                  <div class="form-group row">
-                      <label for="tiempo" class="col-sm-4 col-form-label col-form-label-lg">Tiempo</label>
+                      <label for="tiempo" class="col-sm-4 col-form-label col-form-label-lg">Tiempo(Horas)</label>
                       <div class="col-sm-8">
                         <input id="tiempo" name="tiempo" type="number" class="form-control form-control-sm" id="tiempo" placeholder="Cantidad de horas" maxlength="20" required>
                       </div>
@@ -101,9 +101,7 @@
                  <div class="form-group row">
                       <label for="dosis" class="col-sm-4 col-form-label col-form-label-lg">Aclaraciones</label>
                       <div class="col-sm-8">
-                        <textarea name="dosis" class="form-control" maxlength="96">
-                          
-                        </textarea>
+                        <textarea name="dosis" class="form-control" maxlength="96" onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
                       </div>
                   </div>
 
@@ -116,12 +114,12 @@
             <h4>CPAP BPAP</h4>
                 <div class="form-group">
                   <label for=""> Rampa </label>
-                  <input name="rampa" type="text" class="form-control" id="" placeholder="Rampa" required>
+                  <input name="rampa" type="text" class="form-control" id="" placeholder="Rampa">
                 </div>                            
 
                 <div class="form-group">
                   <label for="cms"> CMS de agua </label>
-                  <input name="cms" type="number" class="form-control" id="" placeholder="CMS" required>
+                  <input name="cms" type="text" class="form-control" id="" placeholder="CMS">
                 </div>
 
             </div>
@@ -189,25 +187,34 @@
  
   
   <script type="text/javascript">
+    
+    function saluda(){
+      alert("saluda");
+    }
 
-    function getOxi() {
-        let oxi_selected = parseInt(document.getElementById("oxi").value);
+    function getOxig(value) {
+        //let oxi_selected = parseInt(document.getElementById("oxi").value);
+        oxi_selected = parseInt(value);
 
+        //console.log(oxi_selected);
         switch(oxi_selected) {
               case 1:
                 document.getElementById('general').style.display = 'block';
                 document.getElementById('cpap').style.display = 'none';
+                //console.log("caso1");
                 
                 break;
               case 2:
                 // code block
                 document.getElementById('general').style.display = 'block';
                 document.getElementById('cpap').style.display = 'none';
+                //console.log("caso2");
                 break;
 
               case 3:
                 document.getElementById('general').style.display = 'none';
                 document.getElementById('cpap').style.display = 'block';
+                //console.log("caso3");
                 break;
 
               case 4:
@@ -236,6 +243,8 @@
                 break;
               default:
                 // code block
+                alert("Seleccione alguna opción");
+
             }
 
       }  

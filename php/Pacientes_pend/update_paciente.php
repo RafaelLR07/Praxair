@@ -21,7 +21,12 @@
             $fecha = $_POST['fecha_nac'];
             $dat = date("Y/m/d", strtotime($fecha));
 
-            
+            $planta = "";
+              if(isset($_POST['pa']) && $_POST['pa']=='1'){
+                  $planta="PLANTA ALTA";
+              }else{
+                  $planta="PLANTA BAJA";
+              }
 		$cedula = $_POST['cedula'] ;
             $no_paciente = $_POST['no_paciente'] ;
             $nombre = $nombre_p ;
@@ -45,7 +50,7 @@
 
 			$sql = "UPDATE pacientes SET cedula = '$cedula',no_paciente = '$no_paciente', nombre= '$nombre', telefono= '$telefono', fecha_nacimiento= '$dat', edad= '$edad', calle= '$calle', numero_exterior='$numero_exterior', numero_interior='$numero_interior', colonia='$colonia',
             cp='$cp', ciudad='$ciudad', municipio='$municipio', entre_calle1='$entre_calle1', entre_calle2='$entre_calle2', familiar_responsable='$familiar_responsable', parentesco='$parentesco', email_familiar='$email_familiar', telefono_familiar='$telefono_familiar',
-            observaciones='$observaciones', estado='$estado'
+            observaciones='$observaciones', estado='$estado',planta='$planta'
                     WHERE cedula = '$id'";
 			//if-else statement in executing our query
 			$_SESSION['message'] = ( $db->exec($sql) ) ? 'Paciente actualizado correctamente' : 'No se puso actualizar paciente';

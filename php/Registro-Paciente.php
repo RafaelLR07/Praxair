@@ -78,7 +78,7 @@
                     <div class="form-group row">
                       <label for="telefono" class="col-sm-4 col-form-label col-form-label-lg">Telefono</label>
                       <div class="col-sm-8">
-                        <input name="telefono" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono" >
+                        <input name="telefono" type="text" class="form-control form-control-sm" id="telefono" placeholder="Telefono" >
                       </div>
                     </div>
                     <div class="form-group row">
@@ -140,7 +140,7 @@
                   <div class="form-group row">
                       <label for="telefono" class="col-sm-4 col-form-label col-form-label-lg">Telefono</label>
                       <div class="col-sm-8">
-                        <input name="telefono_fav" id="telefono_fav" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono">
+                        <input name="telefono_fav" id="telefono_fav" type="text" class="form-control form-control-sm" id="telefono" placeholder="Telefono">
                       </div>
                   </div>
                   <div class="form-group row"></div><br><br><br>
@@ -212,7 +212,15 @@
                       <div class="col-sm-8">
                         <input name="num_int"  type="number" class="form-control form-control-sm" id="interior" placeholder="Numero Interior">
                       </div>
-                    </div>                                                                   
+                    </div>      
+                    
+                     <div class="form-group row">
+                      <label for="exterior" class="col-sm-4 col-form-label col-form-label-lg">Planta alta</label>
+                      <div class="col-sm-8">
+                        <input name="pa"  type="checkbox" value="true" class="form-control form-control-sm" id="pa"/>
+                      </div>
+                    </div>
+
                 </div>  
             <div class="btn-group col-sm-5 col-lg-offset-7">
               <input onclick="LimpiarPacientes_3()" type="button" class="btn btn-warning btn-block" value="Limpiar"/>
@@ -220,7 +228,7 @@
           </div>
           <div class="col-xs-6 col-md-*">
               <div class="panel-heading" align="center">
-                <strong><h3>Observaciones del Medico</h3></strong><hr>
+                <strong><h3>Observaciones</h3></strong><hr>
               </div>
               <div class="form-group col-md-12">
                     <div class="form-group">

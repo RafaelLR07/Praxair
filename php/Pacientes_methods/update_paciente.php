@@ -21,8 +21,15 @@
             $fecha = $_POST['fecha_nac'];
             $dat = date("Y/m/d", strtotime($fecha));
 
-            
-		$cedula = $_POST['cedula'] ;
+            $planta = "";
+              if(isset($_POST['pa']) && $_POST['pa']=='true'){
+                  $planta="PLANTA ALTA";
+              }else{
+                  $planta="PLANTA BAJA";
+              }
+
+             echo $planta; 
+		        $cedula = $_POST['cedula'] ;
             $no_paciente = $_POST['no_paciente'] ;
             $nombre = $nombre_p ;
             $telefono = $_POST['telefono'] ;
@@ -43,7 +50,7 @@
             $observaciones = $_POST['observaciones'] ;
             $estado = $_POST['estado'];//estado del paciente Activo inactivo o defunsion
 
-		$sql = "UPDATE pacientes SET cedula = '$cedula',no_paciente = '$no_paciente', nombre= '$nombre', telefono= '$telefono', fecha_nacimiento= '$dat', edad= '$edad', calle= '$calle', numero_exterior='$numero_exterior', numero_interior='$numero_interior', colonia='$colonia',cp='$cp', ciudad='$cp', municipio='$municipio', entre_calle1='$entre_calle1', entre_calle2='$entre_calle2', familiar_responsable='$familiar_responsable', parentesco='$parentesco', email_familiar='$email_familiar', telefono_familiar='$telefono_familiar',observaciones='$observaciones', estado='$estado'
+		$sql = "UPDATE pacientes SET cedula = '$cedula',no_paciente = '$no_paciente', nombre= '$nombre', telefono= '$telefono', fecha_nacimiento= '$dat', edad= '$edad', calle= '$calle', numero_exterior='$numero_exterior', numero_interior='$numero_interior', colonia='$colonia',cp='$cp', ciudad='$cp', municipio='$municipio', entre_calle1='$entre_calle1', entre_calle2='$entre_calle2', familiar_responsable='$familiar_responsable', parentesco='$parentesco', email_familiar='$email_familiar', telefono_familiar='$telefono_familiar',observaciones='$observaciones', estado='$estado', planta='$planta'
                     WHERE cedula = '$id'";
 
 			//if-else statement in executing our query

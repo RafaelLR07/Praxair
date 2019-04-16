@@ -14,6 +14,10 @@ $pdf = new PDF();
     $skl = "SELECT nombre, diagnostico,observaciones, familiar_responsable, parentesco FROM pacientes 
             WHERE cedula='$id'";
     $resultado = $db -> query($skl);
+    $skl2 = "SELECT diagnostico FROM recetas WHERE paciente = '$id'";
+    $resultado_rec = $db -> query($skl2);
+    foreach($resultado_rec as $dates_rec);
+
     
     foreach($resultado as $dates);
 	$pdf->AliasNbPages();
@@ -23,7 +27,7 @@ $pdf = new PDF();
     $pdf->Cell(180,10,utf8_decode('El que suscribe: '.$dates['nombre'].''),'');
     $pdf->Ln(5);
     $pdf->setX(20);
-    $pdf->Cell(180,10,utf8_decode('Diagnóstico:'.$dates['diagnostico'].''),'');
+    $pdf->Cell(180,10,utf8_decode('Diagnóstico:'.$dates_rec['diagnostico'].''),'');
     
     $pdf->Ln(12);
     $pdf->setX(20);
@@ -65,7 +69,7 @@ $pdf = new PDF();
 
     $pdf->ln(8);
     $pdf->setX(35);
-    $pdf->MultiCell(160,5,utf8_decode('3.	Es importante reportar a la subdirección administrativa o asistente médica en un plazo no mayor a 5 días hábiles vía telefónica o mensaje al número: (228) 8-15-00-00 Ext. 118  y Celular 2281535082(llamada, SMS o uhatts app)  y/o al correo electrónico: 2772.sistchxal@issste.gob.mx en caso de:'),'');
+    $pdf->MultiCell(160,5,utf8_decode('3.	Es importante reportar a la subdirección administrativa o asistente médica en un plazo no mayor a 5 días hábiles vía telefónica o mensaje al número: (228) 8-15-00-00 Ext. 118  y Celular 2281535082(llamada, SMS o Whats App)  y/o al correo electrónico: 2772.sistchxal@issste.gob.mx en caso de:'),'');
 
     $pdf->ln(6);
     $pdf->setX(50);

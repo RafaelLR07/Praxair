@@ -45,9 +45,11 @@ include_once('fechas.php');
     $pdf->Cell(90,6,'FECHA',0,0,'C',1);
     
     //fecha expedida
+    $fechas_functions = new funciones_varias();
+    $imprimer_fec = $fechas_functions->obtener_fecha2();
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_rec['fecha'],1,0,'C',true);
+    $pdf->Cell(0,6, $imprimer_fec,1,0,'C',true);
 
     //inicia la zona 2
     $pdf->Ln(8);
@@ -67,7 +69,7 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['nombre'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['nombre']),1,0,'C',true);
     
     /*apellidos
     $pdf->Ln(8);
@@ -101,7 +103,7 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['calle'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['calle']),1,0,'C',true);
 
     //numero exterior
     $pdf->Ln(8);
@@ -136,7 +138,7 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,'',1,0,'C',true);
+    $pdf->Cell(0,6,$dates_pac['planta'],1,0,'C',true);
      
     //COLONIA
     $pdf->Ln(8);
@@ -147,7 +149,7 @@ include_once('fechas.php');
     
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['colonia'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['colonia']),1,0,'C',true);
      
     //CP
     $pdf->Ln(8);
@@ -169,7 +171,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['ciudad'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['ciudad']),1,0,'C',true);
 
     //MUNICIPIO
     $pdf->Ln(8);
@@ -180,7 +182,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['municipio'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['municipio']),1,0,'C',true);
 
     //ENTRE CALLES
     $pdf->Ln(8);
@@ -191,7 +193,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['entre_calle1'].' && '.$dates_pac['entre_calle2'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['entre_calle1'].' y '.$dates_pac['entre_calle2']),1,0,'C',true);
 
     //TELEFONO
     $pdf->Ln(10);
@@ -234,7 +236,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['familiar_responsable'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['familiar_responsable']),1,0,'C',true);
 
     //PARENTESCO
     $pdf->Ln(8);
@@ -245,7 +247,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['parentesco'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['parentesco']),1,0,'C',true);
 
     //CORREO ELECTRONICO
     $pdf->Ln(8);
@@ -256,7 +258,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['email_familiar'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_pac['email_familiar']),1,0,'C',true);
 
     //CELULAR
     $pdf->Ln(8);
@@ -298,7 +300,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$dates_pac['diagnostico'],1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($dates_rec['diagnostico']),1,0,'C',true);
 
     //inicia zona 5
     //INFORMACION DEL FLUJo
@@ -320,7 +322,7 @@ include_once('fechas.php');
 
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
-    $pdf->Cell(0,6,$var_litros,1,0,'C',true);
+    $pdf->Cell(0,6,utf8_decode($var_litros),1,0,'C',true);
 
     //horas
     $pdf->Ln(8);
@@ -444,7 +446,7 @@ include_once('fechas.php');
     $pdf->SetFillColor(206,204,204);
     $pdf->SetFont('Helvetica','B',11);
     $pdf->SetTextColor(0,0,0);
-    $pdf->Cell(90,6,'NOMBRE DE QUIEN SOLICITA EL SERVICIO',0,0,'C',1);
+    $pdf->Cell(90,6,'NOMBRE DE QUIÉN SOLICITA EL SERVICIO',0,0,'C',1);
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6,$name,1,0,'C',true);
@@ -457,7 +459,7 @@ include_once('fechas.php');
     $pdf->SetFillColor(3, 50, 132);
     $pdf->SetFont('Helvetica','B',11);
     $pdf->SetTextColor(255,255,255);
-    $pdf->Cell(0,6,'INFORMACION DE RECETA',0,0,'C',1); 
+    $pdf->Cell(0,6,'INFORMACIÓN DE RECETA',0,0,'C',1); 
 
 //NUMERO DE RECETA
     $pdf->Ln(8);
