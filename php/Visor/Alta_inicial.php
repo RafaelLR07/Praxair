@@ -46,7 +46,7 @@ include_once('fechas.php');
     
     //fecha expedida
     $fechas_functions = new funciones_varias();
-    $imprimer_fec = $fechas_functions->obtener_fecha2();
+    $imprimer_fec = $fechas_functions->obtener_fecha2($dates_rec['fecha']);
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6, $imprimer_fec,1,0,'C',true);
@@ -479,9 +479,7 @@ include_once('fechas.php');
     $fecha_ini->modify('+1 day');
     $fecha_fin = $fechas_functions->final_mes($var_fecha);
 
-
-
-    
+  
     //FECHA PERIODO QUE CUBRE (INICIO)
     $pdf->Ln(8);
     $pdf->SetFillColor(206,204,204);

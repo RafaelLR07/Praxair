@@ -60,12 +60,49 @@ include_once('../Visor/fechas.php');
          echo $idRec.'<br>';
          echo $idPac.'<br>';
 
-        $sql = "UPDATE recetas SET serie = '$serie', fecha = '$dat', diagnostico = '$diagnostico',indicaciones = '$indicacione', estado = 'SIN', paciente = '$paciente', oxigeno = '$oxigeno',medico='$medico', costo='$costo' WHERE id_recetas = '$idRec' AND paciente= '$idPac'";
+       $sql = "UPDATE recetas SET serie = '$serie', fecha = '$dat', diagnostico = '$diagnostico',indicaciones = '$indicacione', estado = 'SIN', paciente = '$paciente', oxigeno = '$oxigeno',medico='$medico', costo='$costo' WHERE id_recetas = '$idRec' AND paciente= '$idPac'";
+
+        $db->exec($sql); 
+        
+        //comprobar si hay recetas anteriores
+        $rec_kuery = "SELECT COUNT(*) as suma FROM recetas WHERE paciente='$paciente'";
+        $resultRecQuery = $db->query($rec_kuery);
+
+        $fechas_functions = new funciones_varias();
+        foreach ($resultRecQuery as $firstRec);
+        $total_recetas = $firstRec['suma'];
+            if($total_recetas>1){
+                $fecha_fa = $fechas_functions->get_init_month($_POST['fecha']);
+            }else{
+                $fecha_fa = $_POST['fecha'];
+
+            }
+
+        $fecha_ini = $fecha_fa;
+        $fecha_fin = $fechas_functions->getFin($fecha_fa);
+
+        $dias_fac = $fechas_functions->getDiasFac($fecha_ini,$fecha_fin);
+        $factura_dias = $dias_fac*$costo;  
+        echo "<br><br><br><br>";
+        echo $oxigeno . '<br>';
+        echo $costo . '<br>';
+        echo $dias_fac . '<br>';
+        echo $fecha_fa . '<br>';
+        echo $fecha_fin . '<br>';
+        echo $paciente . '<br>';
+        echo $factura_dias . '<br>';
+        echo $idRec . '<br>';
 
 
 
-       $db->exec($sql); 
-    //insertar en facturas
+
+        $sql2 = "UPDATE facturas SET 
+            oxigeno='$oxigeno', costo='$costo', dias_fac='$dias_fac', fec_ini='$fecha_fa', fec_fin='$fecha_fin', paciente='$paciente', estado='ACTIVO', costo_fac='$factura_dias', id_receta='$idRec'
+        WHERE id_receta = '$idRec' AND paciente= '$idPac'";
+
+        $db->exec($sql2);
+        
+        //insertar en facturas
         /*
         $stmt3 = $db->prepare("INSERT INTO facturas (oxigeno, costo, dias_fac, fec_ini, fec_fin, paciente, estado, costo_fac) 
           VALUES (:oxigeno, :costo, :dias_fac, :fec_ini, :fec_fin, :paciente, :estado, :costo_fac)");
@@ -131,7 +168,7 @@ include_once('../Visor/fechas.php');
         header('location: ../Visor/pdf_resp.php?id='.$_POST['cedula'].'');
 
     }*/
-    header('location: ../modificar.php?id='.$paciente3);
+    header('location: ../modificar.php?id='.$paciente);
  
  
 

@@ -9,7 +9,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" align="center">Nueva Receta</h4>
+          <h4 class="modal-title" align="center">Editar Receta</h4>
         </div>
         <div class="modal-body">
             <form method="POST" action="./Recetas_methods/update_rect.php" >
@@ -17,11 +17,11 @@
               <!-- cedula de paciente -->
               <input value="<?php echo $fila['paciente'];?>" name="idPac" type="hidden" class="form-control" id="" placeholder="Numero de serie"  required>
 
-               <input value="<?php echo $fila['id_recetas'];?>" name="idRec" type="hidden" class="form-control" id="" placeholder="Numero de serie"  required>
+               <input value="<?php echo $fila['id_recetas'];?>" name="idRec" type="hidden" class="form-control" id="" placeholder="Numero de serie" required/>
             
               <div class="form-group">
                 <label for="">Numero de serie</label>
-                <input value=" <?php echo $fila['serie']; ?> " onkeyup="javascript:this.value = this.value.toUpperCase()" name="no_serie" type="text" class="form-control" id="" placeholder="Numero de serie"  required>
+                <input value="<?php echo $fila['serie'];?>" onkeyup="javascript:this.value = this.value.toUpperCase()" name="no_serie" type="text" class="form-control" id="" placeholder="Numero de serie" required>
               </div>
 
               <div class="form-group">

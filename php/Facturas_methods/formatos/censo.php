@@ -32,7 +32,9 @@
     
     $resultado = $db -> query($sql);
     $oxi_val = "";
+    
     foreach($resultado as $row){
+
     $paciente = $row['paciente'];
     echo $paciente;
 
@@ -53,6 +55,7 @@
         //Se guarda la cedula del paciente 
      
        /*
+
         $pdf->Cell(30,6,utf8_decode('CLINICA HOSPITAL XALAPA'),1,0,'L');
         $pdf->Cell(80,6,utf8_decode($row['paciente']),1,0,'L');
         $pdf->Cell(30,6,utf8_decode($row['cedula']),1,0,'L');
@@ -60,7 +63,7 @@
         $pdf->Cell(30,6,$row['calle']." ".$row['numero_interior']." ".$row['colonia']." ".$row['cp']." ".$row['municipio']  ,1,0,'L');
         $pdf->Cell(25,6,utf8_decode('Medico'),1,0,'L');
         $pdf->Cell(35,6,utf8_decode('DIAGNOSTICO'),1,1,'C');
-
+        
        */
         $pdf->Cell(50,18,utf8_decode('CLINICA HOSPITAL XALAPA'),1,0,'L');
         $pdf->Cell(80,18,utf8_decode($paci['nombre']),1,0,'L');

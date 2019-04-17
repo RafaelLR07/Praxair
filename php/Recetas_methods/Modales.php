@@ -33,7 +33,7 @@
             
               <div class="form-group">
                 <label for="">Numero de serie</label>
-                <input onkeyup="javascript:this.value = this.value.toUpperCase()" name="no_serie" type="text" class="form-control" id="" placeholder="Numero de serie"  required>
+                <input onkeyup="javascript:this.value = this.value.toUpperCase()" name="no_serie" type="text" class="form-control" id="" placeholder="Numero de serie"required>
               </div>
 
               <div class="form-group">
