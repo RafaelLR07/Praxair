@@ -55,7 +55,7 @@
 				<!--
 				<button onclick="document.getElementById('censo1').value=document.getElementById('fecha_ini').value;document.getElementById('censo2').value=document.getElementById('fecha_end').value;" id="boton_pdf" name="PDF" type="" class="btn btn-warning btn-lg" type="button">
               		<span class="glyphicon glyphicon-file"></span> Censo
-           		</button> -->
+           		</button>-->
 				</form>
 				
 					
