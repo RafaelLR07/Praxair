@@ -13,7 +13,7 @@
     </head>
     
       <!-- Encabezado de pagina del sistema PRAXAoR-->
-        <?php include "Pagina/Header.php"; ?>       
+        <?php include " Pagina/Header.php"; ?>       
       <!-- Fin-->
   <body>
     <?php
