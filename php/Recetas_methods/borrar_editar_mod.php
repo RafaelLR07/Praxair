@@ -12,7 +12,7 @@
           <h4 class="modal-title" align="center">Editar Receta</h4>
         </div>
         <div class="modal-body">
-            <form method="POST" action="./Recetas_methods/update_rect.php" >
+            <form method="POST" action="./Recetas_methods/update_rect.php">
               
               <!-- cedula de paciente -->
               <input value="<?php echo $fila['paciente'];?>" name="idPac" type="hidden" class="form-control" id="" placeholder="Numero de serie"  required>
@@ -104,7 +104,7 @@
               
               <div class="form-group">
                 <label for="">Paciente</label>
-                <input value="<?php echo $fila['paciente']; ?>" name="paciente" type="text" class="form-control" id="" placeholder="Numero de serie"  required readonly>
+                <input value="<?php echo $fila['paciente']; ?>" name="paciente" type="text" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" id="" placeholder="Numero de serie"  required>
               </div>
               
               <p id="p"></p>
