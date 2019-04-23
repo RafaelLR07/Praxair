@@ -42,10 +42,25 @@
            		</button> -->
 				</form>
 
-				<button id="more" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#receta"
-			    >
-			    	<span class="glyphicon glyphicon-plus"></span> Nueva Receta
-			    </button>
+				<?php 
+					$recetas_query = "SELECT * FROM recetas WHERE paciente ='$id'";
+					$resultado_rec = $db->query($recetas_query);
+					if(($resultado_rec->rowCount())>0){
+						?>
+						<button id="more" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#receta_pos">
+			    			<span class="glyphicon glyphicon-plus"></span>Nueva recet</button>
+						<?php
+						
+					}else{
+						?>
+						<button id="more" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#receta">			    
+			    		<span class="glyphicon glyphicon-plus"></span> Nueva Receta
+			    		</button>
+						<?php
+					}
+				 ?>
+
+				
 
 			</div>
 			
@@ -58,6 +73,7 @@
 </div>
 <?php 
 	include 'Modales.php';
+	include 'Modales_first.php';
 ?>
 
 

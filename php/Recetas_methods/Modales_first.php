@@ -17,7 +17,7 @@
         header("Location: ../index.php");
       }        
 ?>
-<div class="modal fade" id="receta" role="dialog">
+<div class="modal fade" id="receta_pos" role="dialog">
    
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -27,7 +27,7 @@
           <h4 class="modal-title" align="center">Nueva Receta</h4>
         </div>
         <div class="modal-body">
-            <form method="POST" action="./Recetas_methods/add_rec.php" >
+            <form method="POST" action="./Recetas_methods/add_pos_rec.php" >
             
               <input value="<?php echo $idd?>" name="idd" type="hidden" class="form-control" id="" placeholder="Numero de serie"  required>
             
@@ -70,7 +70,13 @@
                 <label for="observaciones">Diagnostico:</label>
                 <textarea onkeyup="javascript:this.value = this.value.toUpperCase()" maxlength="100" name="diagnostico" class="form-control" rows="3" ></textarea>
               </div>
-              
+                
+              <div class="form-group">
+                <label for="observaciones">Indicaciones:</label>
+                <textarea  onkeyup="javascript:this.value = this.value.toUpperCase()" maxlength="100" name="indicaciones" class="form-control" rows="4" ></textarea>
+              </div>
+             
+          
    
             
               <!--
@@ -80,50 +86,7 @@
                 <textarea onkeyup="javascript:this.value = this.value.toUpperCase()" maxlength="100" name="indicaciones" class="form-control" rows="4" ></textarea>
               </div>
              -->
-            <div class="general" id="general">
-              <h4>Indicaciones</h4>
-              <div class="form-group row">
-                      <label for="Dosis" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto(litros)</label>
-                      <div class="col-sm-8">
-                        <input name="litros" type="text"  class="form-control form-control-sm" id="dos_min" placeholder="Cantidad de litros" maxlength="20" required onkeyup="javascript:this.value = this.value.toUpperCase()">
-                      </div>
-                    </div>
-                  
-          
-                 <div class="form-group row">
-                      <label for="tiempo" class="col-sm-4 col-form-label col-form-label-lg">Tiempo(Horas)</label>
-                      <div class="col-sm-8">
-                        <input id="tiempo" name="tiempo" type="text" class="form-control form-control-sm" id="tiempo" placeholder="Cantidad de horas" maxlength="20" required onkeyup="javascript:this.value = this.value.toUpperCase()"> 
-                      </div>
-                   </div>
-
-
-                 <div class="form-group row">
-                      <label for="dosis" class="col-sm-4 col-form-label col-form-label-lg">Aclaraciones</label>
-                      <div class="col-sm-8">
-                        <textarea name="dosis" class="form-control" maxlength="96" onkeyup="javascript:this.value = this.value.toUpperCase()"></textarea>
-                      </div>
-                  </div>
-
-          
-            </div>
-
-            <!-- CPAP ------------------------------------ BPAP   -->
-
-            <div class="cpap" id="cpap" style="">
-            <h4>CPAP BPAP</h4>
-                <div class="form-group">
-                  <label for=""> Rampa </label>
-                  <input name="rampa" type="text" class="form-control" id="" placeholder="Rampa" onkeyup="javascript:this.value = this.value.toUpperCase()">
-                </div>                            
-
-                <div class="form-group">
-                  <label for="cms"> CMS de agua </label>
-                  <input name="cms" type="text" class="form-control" id="" placeholder="CMS" onkeyup="javascript:this.value = this.value.toUpperCase()">
-                </div>
-
-            </div>
-
+           
             <!-------------------------------------------------------- -->
               <!-- <div class="form-group">
                 <label for=""> Estado </label>

@@ -25,11 +25,11 @@
 	$pdf->SetFont('Arial','B',12);
 	$pdf->Cell(30,6,'CEDULA',1,0,'C',1);
     $pdf->Cell(80,6,'NOMBRE',1,0,'C',1);
-    $pdf->Cell(30,6,'TIPO',1,0,'C',1);
+    $pdf->Cell(35,6,'TIPO',1,0,'C',1);
     $pdf->Cell(20,6,'COSTO',1,0,'C',1);
     $pdf->Cell(30,6,'INICIO',1,0,'C',1);
 	$pdf->Cell(25,6,'FIN',1,0,'C',1);
-    $pdf->Cell(20,6,'DIAS ',1,0,'C',1);
+    $pdf->Cell(15,6,'DIAS ',1,0,'C',1);
     $pdf->Cell(35,6,'COSTO TOTAL',1,1,'C',1);
 	$pdf->SetFont('Arial','',10);
     
@@ -95,12 +95,12 @@
 
         $pdf->Cell(30,6,utf8_decode($row['paciente']),1,0,'L');
         $pdf->Cell(80,6,utf8_decode($name['nombre']),1,0,'L');
-        $pdf->Cell(30,6,utf8_decode($oxi_val),1,0,'L');
+        $pdf->Cell(35,6,utf8_decode($oxi_val),1,0,'L');
         $pdf->Cell(20,6,utf8_decode('$'.$row['costo']),1,0,'L');
         $pdf->Cell(30,6,$q,1,0,'L');
         $pdf->Cell(25,6,utf8_decode($q2),1,0,'L');
-        $pdf->Cell(20,6,$dias_fac,1,0,'C');
-        $pdf->Cell(35,6,utf8_decode('$'.$factura_pretty),1,1,'C');
+        $pdf->Cell(15,6,$dias_fac,1,0,'C');
+        $pdf->Cell(35,6,utf8_decode('$'.$factura_pretty),1,1,'R');
        
 
         //$pdf->Cell($telefonoAncho,6,$row['telefono'],1,1,'C');

@@ -16,7 +16,8 @@
         ciudad LIKE '%".$q."%' OR
         municipio LIKE '%".$q."%' OR
         telefono LIKE '%".$q."%' OR
-		familiar_responsable LIKE '%".$q."%')";
+		familiar_responsable LIKE '%".$q."%') 
+        ORDER BY nombre ASC";
 
     /*$pdf = new PDF();
     $pdf->AliasNbPages();

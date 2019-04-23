@@ -24,35 +24,13 @@ include_once('../Visor/fechas.php');
         $oxiheno = $_POST['oxigeno'];
         $cadena = "";
         //general concentrador y cilindro
-        $litros = $_POST['litros'];
-        $dosis = $_POST['dosis'];
-        $tiempo = $_POST['tiempo'];
-
-        //cpap bpap
-        $rampa = $_POST['rampa'];
-        $cms = $_POST['cms'];
+        $indicaciones = $_POST['indicaciones'];
 
         //Registro general de indicaciones
 
-        //normal cilindro o concentrador
-        if($oxiheno==1||$oxiheno==2){
-            $cadena =  $litros.'-'.$tiempo.'-'.$dosis;
-        }
-        //especial + cilindro
-        if($oxiheno==5||$oxiheno==6){
-             $cadena =  $litros.'|'.$tiempo.'|'.$rampa.'|'.$cms.'|'.$dosis;
-        }
+      
 
-        //especial + concentrador
-        if($oxiheno==7||$oxiheno==8){
-            $cadena =  $litros.'|'.$tiempo.'|'.$rampa.'|'.$cms.'|'.$dosis;
-        }
-
-        //bpap o cpap --> caso poco probable
-        if($oxiheno==3||$oxiheno==4){
-            $cadena =  $rampa.'/'.$cms;
-        }
-
+       
 
 
 		$stmt = $db->prepare("INSERT INTO recetas (serie, fecha, diagnostico, indicaciones, estado, paciente, oxigeno, medico, costo)
@@ -63,7 +41,7 @@ include_once('../Visor/fechas.php');
                 array( ':serie'=> $_POST['no_serie'], 
                 ':fecha'=> $dat, 
                 ':diagnostico'=> $_POST['diagnostico'], 
-                ':indicaciones'=> $cadena, 
+                ':indicaciones'=> $indicaciones, 
                 ':estado'=> 'SIN', 
                 ':paciente'=> $_POST['paciente'], 
                 ':oxigeno'=> $_POST['oxigeno'], 
@@ -139,27 +117,10 @@ include_once('../Visor/fechas.php');
 
 	//cerrar la conexion
 	$database->close();
+  
+       
 
-
-
-    //preveer si es la primera receta
-    
-    
-    $action=2;
-    $recetasQuery="SELECT COUNT(*) as suma FROM RECETAS WHERE paciente='$pacient3'";
-
-    $resultRecQuery = $db->query($recetasQuery);
-    foreach ($resultRecQuery as $firstRec);
-    $total_recetas = $firstRec['suma'];
-    if($total_recetas>1){
-        header('location: ../modificar.php?id='.$pacient3);       
-    }else{
-        
-          header('location: ../Visor.php?action='.$action. '&id='.$id_usuario);
-
-    }
-    
-     //header('location: ../modificar.php?id='.$id_usuario);       
+     header('location: ../modificar.php?id='.$id_usuario);       
  
 
 	

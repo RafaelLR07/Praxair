@@ -49,13 +49,13 @@
 				</form>
 				
 				<!-- Reporte de censo -->
-				<form action="Facturas_methods/formatos/censo.php" class="form_pa_ac" method="POST">
+				<form action="Facturas_methods/formatos/censo_ex.php" class="form_pa_ac" method="POST">
 				<input type="hidden" name="censo1"  value="0"  id="censo1">
 				<input type="hidden" name="censo2"  value="0"  id="censo2">
-				<!--
+				
 				<button onclick="document.getElementById('censo1').value=document.getElementById('fecha_ini').value;document.getElementById('censo2').value=document.getElementById('fecha_end').value;" id="boton_pdf" name="PDF" type="" class="btn btn-warning btn-lg" type="button">
               		<span class="glyphicon glyphicon-file"></span> Censo
-           		</button>-->
+           		</button>
 				</form>
 				
 					

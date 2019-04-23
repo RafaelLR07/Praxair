@@ -318,8 +318,38 @@ include_once('fechas.php');
     $pdf->SetTextColor(0,0,0);
     $pdf->Cell(90,6,'LITROS',0,0,'C',1);
 
-    list($var_litros, $var_2,$var_horas) = explode('/',$dates_rec['indicaciones']);
 
+    $eval_norm = strpos($dates_rec['indicaciones'], '-');
+    $eval_especial = strpos($dates_rec['indicaciones'], '|');
+    $eval_rara = strpos($dates_rec['indicaciones'], '/');
+
+    $var_litros="";
+    $var_horas="";
+    $var_2="";
+    $rampa="";
+    $cms="";
+
+    if($eval_norm){
+
+         list($var_litros,$var_horas,$var_2) = explode('-',$dates_rec['indicaciones']);
+
+    }
+
+    if($eval_especial){
+       
+         list($var_litros,$var_horas,$rampa,$cms,$var_2) = explode('|',$dates_rec['indicaciones']);
+
+    }
+
+    if($eval_rara){
+       
+         list($rampa,$cms,) = explode('|',$dates_rec['indicaciones']);
+
+    }
+
+
+
+   
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6,utf8_decode($var_litros),1,0,'C',true);
@@ -364,7 +394,7 @@ include_once('fechas.php');
  
      $pdf->SetFillColor(255,255,255);
      $pdf->SetFont('Helvetica','',11);
-     $pdf->Cell(0,6,'',1,0,'C',true);
+     $pdf->Cell(0,6,$rampa,1,0,'C',true);
  
 
      //CMS DE AGUA
@@ -376,7 +406,7 @@ include_once('fechas.php');
  
      $pdf->SetFillColor(255,255,255);
      $pdf->SetFont('Helvetica','',11);
-     $pdf->Cell(0,6,'',1,0,'C',true);
+     $pdf->Cell(0,6,$cms,1,0,'C',true);
  
 
     //inicia zona 7
