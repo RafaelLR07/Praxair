@@ -22,12 +22,12 @@
             $dat = date("Y/m/d", strtotime($fecha));
 
             $planta = "";
-              if(isset($_POST['pa']) && $_POST['pa']=='1'){
+              if(isset($_POST['pa']) && $_POST['pa']=='true'){
                   $planta="PLANTA ALTA";
               }else{
                   $planta="PLANTA BAJA";
               }
-		$cedula = $_POST['cedula'] ;
+		    $cedula = $_POST['cedula'] ;
             $no_paciente = $_POST['no_paciente'] ;
             $nombre = $nombre_p ;
             $telefono = $_POST['telefono'] ;
@@ -67,6 +67,6 @@
 		$_SESSION['message'] = 'Complete el formulario de edición';
 	}
 
-      header('location: ../Visor.php?action='.$action. '&id='.$cedula);
+      header('location: ../modificar.php?action='.$action. '&id='.$cedula);
 
 ?>

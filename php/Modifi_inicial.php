@@ -77,7 +77,7 @@
                     <div class="form-group row">
                       <label for="Paciente" class="col-sm-4 col-form-label col-form-label-lg">Numero de Paciente</label>
                       <div class="col-sm-8">
-                        <input min="1" max="99999999999" value="<?php echo $row['no_paciente'] ?>" name="no_paciente" type="number" class="form-control form-control-sm" id="Paciente" placeholder="Numero Paciente"  onkeyup="mayus(this)">
+                        <input value="<?php echo $row['no_paciente'] ?>" name="no_paciente" type="number" class="form-control form-control-sm" id="Paciente" placeholder="Numero Paciente"  onkeyup="mayus(this)">
                       </div>
                     </div>
                     
@@ -90,7 +90,7 @@
                     <div class="form-group row">
                       <label for="telefono" class="col-sm-4 col-form-label col-form-label-lg">Telefono</label>
                       <div class="col-sm-8">
-                        <input min="1111111" max="9999999999"  value="<?php echo $row['telefono'] ?>" name="telefono" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono"  />
+                        <input  value="<?php echo $row['telefono'] ?>" name="telefono" type="number" class="form-control form-control-sm" id="telefono" placeholder="Telefono"  />
                       </div>
                     </div>
                     <div class="form-group row">
@@ -138,7 +138,7 @@
                   <div class="form-group row">
                       <label for="Parentesco" class="col-sm-4 col-form-label col-form-label-lg">Parentesco</label>
                       <div class="col-sm-8">
-                          <input name="parentesco" class="form-control" id="Parentesco" onkeyup="mayus(this)">
+                          <input name="parentesco" class="form-control" id="Parentesco" onkeyup="mayus(this)" placeholder="Parentesco">
                            
                           
                       </div>
@@ -224,7 +224,26 @@
                       <div class="col-sm-8">
                         <input  value="<?php echo $row['numero_interior'] ?>" name="num_int"  type="text" class="form-control form-control-sm" id="interior" placeholder="Numero Interior">
                       </div>
-                    </div>                                                                   
+                    </div>       
+
+                     <div class="form-group row">
+                      <label for="exterior" class="col-sm-4 col-form-label col-form-label-lg">Planta alta</label>
+                      <div class="col-sm-8">
+                        <?php 
+                          if($row['planta']=="PLANTA ALTA"){
+                            ?>
+                          <input name="pa"  type="checkbox" value="<?php echo "true" ?>" class="form-control form-control-sm" id="pa" checked/>
+                        <?php  
+                          }else{
+                            ?>
+                            <input name="pa"  type="checkbox" value="<?php echo "true" ?>" class="form-control form-control-sm" id="pa" />
+                            <?php
+                          }
+                         ?>
+                        
+                      </div>
+                    </div>  
+
                 </div>  
             <div class="btn-group col-sm-5 col-lg-offset-7">
               <input onclick="LimpiarPacientes_3();" type="button" class="btn btn-warning btn-block" value="Limpiar"/>

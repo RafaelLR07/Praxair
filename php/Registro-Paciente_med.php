@@ -114,82 +114,13 @@
                       </div>
                   </div>
                   
-                   <div class="form-group row">
-                      <label for="Paterno" class="col-sm-4 col-form-label col-form-label-lg">No. Receta</label>
-                      <div class="col-sm-8">
-                        <input maxlength="25" name="serie" type="text" onkeyup="mayus(this)" class="form-control form-control-sm" id="serie" placeholder="Numero de serie de receta" maxlength="25" required>
-                      </div>
-                    </div>
-
-                     <div class="form-group row">
-                      <label for="oxigenos" class="col-sm-4 col-form-label col-form-label-lg">Oxigenos</label>
-                      <div class="col-sm-8">
-                        <select name="oxigeno" class="form-control form-control-sm" id="oxigeno" required>
-
-                            <option value="" selected>Seleccione el oxigeno a recetar</option>  
-
-                            <?php
-              $database = new Connection();
-              $db = $database->open();
-              $consulta = 'SELECT * FROM oxigenos';
-                try{
-                  foreach ($db->query($consulta) as $fila){
-                    ?>
-                    <option value="<?php  echo $fila['id_oxigenos']  ?>"><?php  echo $fila['tipo']?></option>  
-                    <?php     
-                  }
-
-
-                }catch(PDOException $e){
-                  echo "Error en la consulta de tipo ". $e->getMessage(); 
-                }
-                
-                
-                
-
-
-              ?>
-
-                        </select>
-                      </div>
-                  </div>
-                  
-
                   <div class="form-group row">
-                    <label for="Parentesco" class="col-sm-4 col-form-label col-form-label-lg">INDICACIONES</label>
-                  </div>
-
-                 <div class="form-group row">
-                      <label for="Paterno" class="col-sm-4 col-form-label col-form-label-lg">Dosis por minuto</label>
+                      <label for="diagnostico"  class="col-sm-4 col-form-label col-form-label-lg">Indicaciones</label>
                       <div class="col-sm-8">
-                        <input name="dos_min" type="number"  class="form-control form-control-sm" id="dos_min" placeholder="Cantidad de litros" maxlength="20" required>
-                      </div>
-                    </div>
-                  
+                          <textarea maxlength="1200" name="indicaciones" onkeyup="mayus(this)" type="text" class="form-control  form-control-sm" id="indicaciones" placeholder="Contenido ficha medica" required></textarea>
 
-                  <div class="form-group row">
-                      <label for="indicaciones" class="col-sm-4 col-form-label col-form-label-lg">Hora de dosis</label>
-                      <div class="col-sm-8">
-                        <select name="hora_dosis" class="form-control form-control-sm" id="hora_dosis" placeholder="Indicaciones" required>
-
-                            <option value="" >Seleccione la parte del dia de aplicacion</option>  
-                            <option value="continuo">Uso continuo</option>                
-                            <option value="noche">En la noche</option>
-                            <option value="mañana">En la mañana</option>
-                            <option value="mañana&noche">Mañana y noche</option>
-                            
-          
-
-                        </select>
                       </div>
                   </div>
-                 
-                 <div class="form-group row">
-                      <label for="tiempo" class="col-sm-4 col-form-label col-form-label-lg">Tiempo</label>
-                      <div class="col-sm-8">
-                        <input id="tiempo" name="tiempo" type="number" class="form-control form-control-sm" id="tiempo" placeholder="Cantidad de horas" maxlength="20" required>
-                      </div>
-                    </div>
                   
 
                 </div>

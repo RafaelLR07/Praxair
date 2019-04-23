@@ -62,17 +62,17 @@ include_once('../Visor/fechas.php');
                     ':observaciones' => "", 
                     ':estado' =>  $var_estado,
                     ':diagnostico' => $_POST['diagnostico'],
-                    ':indicaciones' => $indicaciones,
+                    ':indicaciones' => $_POST['indicaciones'],
 
                 )) ) 
             ? 'Empleado guardado correctamente' : 'Algo salió mal. No se puede agregar miembro';
 		
 	
-
+       
 
   //-.-------------------------------------------------------------------------
 
-
+        /*
         $oxigeno = $_POST['oxigeno'];
         $query_oxi = "SELECT * FROM oxigenos WHERE id_oxigenos='$oxigeno'";
         foreach ($db->query($query_oxi) as $row);
@@ -114,7 +114,7 @@ include_once('../Visor/fechas.php');
         $fecha_fin = $fechas_functions->getFin($fecha_regis);
 
         $dias_fac = $fechas_functions->getDiasFac($fecha_ini,$fecha_fin);
-        $factura_dias = $dias_fac*$row['precio'];
+        $factura_dias = $dias_fac*$row['precio'];*/
         
         /*
         echo 'inicio';
@@ -129,6 +129,7 @@ include_once('../Visor/fechas.php');
         //echo var_dump($fecha_fin);
        // echo $fecha_fin;
         
+        /*
         $stmt3->execute(array(
                       ':oxigeno' => $row['id_oxigenos'] ,
                       ':costo' => $row['precio'] ,
@@ -139,7 +140,7 @@ include_once('../Visor/fechas.php');
                       ':estado' => $_POST['diagnostico'] ,
                       ':costo_fac' => $factura_dias
 
-        ));
+        ));*/
 
         
         $stmt4 = $db->prepare("INSERT INTO altas (fecha_alta, cedula) 
