@@ -46,7 +46,9 @@ include_once('fechas.php');
     
     //fecha expedida
     $fechas_functions = new funciones_varias();
-    $imprimer_fec = $fechas_functions->obtener_fecha2($dates_rec['fecha']);
+    date_default_timezone_set('America/Mexico_City');
+
+    $imprimer_fec = $fechas_functions->obtener_fecha2(date("Y-m-d"));
     $pdf->SetFillColor(255,255,255);
     $pdf->SetFont('Helvetica','',11);
     $pdf->Cell(0,6, $imprimer_fec,1,0,'C',true);
